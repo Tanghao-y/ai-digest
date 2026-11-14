@@ -5,7 +5,7 @@
 <title>AI 产品动态 · 11月14日晚报</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%230a84ff%22%2F%3E%3Cpath%20d%3D%22M17%2021h30M17%2032h30M17%2043h19%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <meta name="robots" content="noindex">
-<meta name="build" content="mwghphbf">
+<meta name="build" content="mwght1sy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI 产品动态 · 11月14日晚报">
 <meta property="og:description" content="共 14 条 · Meta · Muse 上线代打电话功能；Anthropic · Claude Meetings beta 上线；Anthropic · Claude Duet 邀请全部美国等待名单用户">
@@ -129,8 +129,10 @@
      text, one line with the company and a time, then the headline. Only the sizes change. */
   .bento { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .duo { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-  .bento a { position: relative; display: block; border-radius: 24px; overflow: hidden; color: #fff; --tint: 24 24 28;
+  .bento a { position: relative; display: block; border-radius: 24px; overflow: hidden; color: #fff;
              background: linear-gradient(160deg, #3a6ff0, #1c1c1e 85%); }
+  .bento a { --tint: var(--tint-day, 72 72 78); }
+  @media (prefers-color-scheme: dark) { .bento a { --tint: var(--tint-night, 24 24 28); } }
   .bento img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
   .bento .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 14px 13px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 92px), rgb(var(--tint) / 0.891) calc(100% - 88.2px), rgb(var(--tint) / 0.867) calc(100% - 84.3px), rgb(var(--tint) / 0.829) calc(100% - 80.5px), rgb(var(--tint) / 0.781) calc(100% - 76.7px), rgb(var(--tint) / 0.726) calc(100% - 72.8px), rgb(var(--tint) / 0.664) calc(100% - 69px), rgb(var(--tint) / 0.6) calc(100% - 65.2px), rgb(var(--tint) / 0.533) calc(100% - 61.3px), rgb(var(--tint) / 0.467) calc(100% - 57.5px), rgb(var(--tint) / 0.402) calc(100% - 53.7px), rgb(var(--tint) / 0.34) calc(100% - 49.8px), rgb(var(--tint) / 0.281) calc(100% - 46px), rgb(var(--tint) / 0.227) calc(100% - 42.2px), rgb(var(--tint) / 0.179) calc(100% - 38.3px), rgb(var(--tint) / 0.136) calc(100% - 34.5px), rgb(var(--tint) / 0.1) calc(100% - 30.7px), rgb(var(--tint) / 0.07) calc(100% - 26.8px), rgb(var(--tint) / 0.046) calc(100% - 23px), rgb(var(--tint) / 0.027) calc(100% - 19.2px), rgb(var(--tint) / 0.015) calc(100% - 15.3px), rgb(var(--tint) / 0.006) calc(100% - 11.5px), rgb(var(--tint) / 0.002) calc(100% - 7.7px), rgb(var(--tint) / 0) calc(100% - 3.8px), rgb(var(--tint) / 0) calc(100% - 0px));
                text-shadow: 0 1px 3px rgba(0,0,0,.28); }
@@ -193,12 +195,12 @@
       <a href="#n1" class="hero bare">
         <span class="tx"><span class="firm"><span>Meta</span><span class="at">22:17</span></span><span class="head">Muse 上线代打电话功能</span></span></a>
       <div class="duo">
-      <a href="#n2" class="mini" style="--tint: 116 60 27"><img src="09.jpg" alt="" loading="lazy">
+      <a href="#n2" class="mini" style="--tint-day: 165 86 39; --tint-night: 116 60 27"><img src="09.jpg" alt="" loading="lazy">
         <span class="tx"><span class="firm"><span>Anthropic</span><span class="at">19:34</span></span><span class="head">Claude Meetings beta 上线</span></span></a>
-      <a href="#n5" class="mini lt" style="--tint: 252 253 253"><img src="01.jpg" alt="" loading="lazy">
+      <a href="#n5" class="mini lt" style="--tint-day: 252 253 253; --tint-night: 252 253 253"><img src="01.jpg" alt="" loading="lazy">
         <span class="tx"><span class="firm"><span>Cloudflare</span></span><span class="head">开源AI智能体浏览器 Kitesurf</span></span></a>
       </div>
-      <a href="#n13" class="tall" style="--tint: 81 74 61"><img src="13.jpg" alt="" loading="lazy">
+      <a href="#n13" class="tall" style="--tint-day: 116 106 88; --tint-night: 81 74 61"><img src="13.jpg" alt="" loading="lazy">
         <span class="tx"><span class="firm"><span>Anthropic</span><span class="at">19:34</span></span><span class="head">官宣启动 IPO</span></span></a>
     </div>
     <ol class="toc">

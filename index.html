@@ -60,7 +60,9 @@
   .day.rel span { font-size: 15px; font-weight: 600; color: var(--mute); letter-spacing: 0; }
   .badge { padding: 0 8px; border-radius: 99px; background: var(--ed-solid); color: #fff; font-weight: 700; letter-spacing: 0; text-shadow: none; }
   /* the newest edition */
-  .lead { display: block; border-radius: 24px; background: var(--card); overflow: hidden; --tint: 24 24 28; }
+  .lead { display: block; border-radius: 24px; background: var(--card); overflow: hidden; }
+  .lead { --tint: var(--tint-day, 72 72 78); }
+  @media (prefers-color-scheme: dark) { .lead { --tint: var(--tint-night, 24 24 28); } }
   .lead .pic { position: relative; display: block; aspect-ratio: 16 / 10; background: linear-gradient(160deg, #3a6ff0, #1c1c1e 85%); }
   .lead img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .lead .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 104px 18px 16px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 126px), rgb(var(--tint) / 0.891) calc(100% - 120.8px), rgb(var(--tint) / 0.867) calc(100% - 115.5px), rgb(var(--tint) / 0.829) calc(100% - 110.3px), rgb(var(--tint) / 0.781) calc(100% - 105px), rgb(var(--tint) / 0.726) calc(100% - 99.8px), rgb(var(--tint) / 0.664) calc(100% - 94.5px), rgb(var(--tint) / 0.6) calc(100% - 89.2px), rgb(var(--tint) / 0.533) calc(100% - 84px), rgb(var(--tint) / 0.467) calc(100% - 78.8px), rgb(var(--tint) / 0.402) calc(100% - 73.5px), rgb(var(--tint) / 0.34) calc(100% - 68.3px), rgb(var(--tint) / 0.281) calc(100% - 63px), rgb(var(--tint) / 0.227) calc(100% - 57.8px), rgb(var(--tint) / 0.179) calc(100% - 52.5px), rgb(var(--tint) / 0.136) calc(100% - 47.3px), rgb(var(--tint) / 0.1) calc(100% - 42px), rgb(var(--tint) / 0.07) calc(100% - 36.7px), rgb(var(--tint) / 0.046) calc(100% - 31.5px), rgb(var(--tint) / 0.027) calc(100% - 26.3px), rgb(var(--tint) / 0.015) calc(100% - 21px), rgb(var(--tint) / 0.006) calc(100% - 15.8px), rgb(var(--tint) / 0.002) calc(100% - 10.5px), rgb(var(--tint) / 0) calc(100% - 5.2px), rgb(var(--tint) / 0) calc(100% - 0px)); color: #fff;
@@ -117,7 +119,7 @@
 <main class="col">
   <div id="list">
     <h2 class="day" data-date="2026-11-14"><span>11月14日 周六</span></h2>
-    <a class="lead pm" href="2026-11-14-pm/" style="--tint: 116 60 27">
+    <a class="lead pm" href="2026-11-14-pm/" style="--tint-day: 165 86 39; --tint-night: 116 60 27">
       <span class="pic"><img src="2026-11-14-pm/09.jpg" alt="">
         <span class="tx"><span class="kicker"><span class="badge">晚报</span>14 条 · 22:17 更新</span><span class="t">Meta · Muse 上线代打电话功能</span></span></span>
       <ul><li>Anthropic · Claude Meetings beta 上线</li><li>Anthropic · Claude Duet 邀请全部美国等待名单用户</li><li>Anthropic · Claude Code Projects 支持并行 worker</li></ul>
