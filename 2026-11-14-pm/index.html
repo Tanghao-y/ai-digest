@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>AI 产品动态 · 11月14日晚报</title>
+<meta name="robots" content="noindex">
+<meta name="build" content="mwga3smp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 产品动态 · 11月14日晚报">
+<meta property="og:description" content="共 8 条 · Cloudflare · 开源AI智能体浏览器 Kitesurf；Google · Gemini接入Google Wallet；Vercel Labs · 开源UI SDK">
+<meta property="og:url" content="https://tanghao-y.github.io/ai-digest/2026-11-14-pm/">
+<meta property="og:image" content="https://tanghao-y.github.io/ai-digest/2026-11-14-pm/03.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --bg: #f2f2f7; --card: #fff; --ink: #1c1c1e; --ink2: #3a3a3c; --mute: #8e8e93; --line: rgba(60,60,67,.14);
+          --chip: #eef0f4; --accent: #0a84ff; --on-accent: #fff; --bar: rgba(242,242,247,.86); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+          --bg: #000; --card: #1c1c1e; --ink: #f2f2f7; --ink2: #d1d1d6; --line: rgba(235,235,245,.16);
+          --chip: #2c2c2e; --bar: rgba(0,0,0,.8); } }
+  :root[data-theme="dark"] { --bg: #000; --card: #1c1c1e; --ink: #f2f2f7; --ink2: #d1d1d6;
+          --line: rgba(235,235,245,.16); --chip: #2c2c2e; --bar: rgba(0,0,0,.8); }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .col { max-width: 640px; margin: 0 auto; padding-left: 16px; padding-right: 16px; }
+  header { padding-top: max(28px, env(safe-area-inset-top)); padding-bottom: 14px; }
+  .eyebrow { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; letter-spacing: .06em;
+             color: var(--mute); font-weight: 600; }
+  .eyebrow a { color: var(--accent); text-decoration: none; letter-spacing: 0; font-size: 15px; }
+  h1 { margin: 2px 0 6px; font-size: 32px; line-height: 1.2; letter-spacing: -.01em; }
+  h1 .ed { display: inline-block; vertical-align: middle; margin-left: 8px; padding: 2px 11px; border-radius: 99px;
+           background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 600; letter-spacing: 0; }
+  .meta { font-size: 14px; color: var(--mute); }
+  .f { position: absolute; opacity: 0; pointer-events: none; }
+  nav { position: sticky; top: 0; z-index: 5; background: var(--bar); border-bottom: .5px solid var(--line);
+        -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); }
+  nav .col { display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
+  nav .col::-webkit-scrollbar { display: none; }
+  nav label { flex: none; padding: 6px 13px; border-radius: 99px; background: var(--card); color: var(--ink2);
+              font-size: 14px; font-weight: 600; cursor: pointer; user-select: none; -webkit-user-select: none; }
+  nav label i { margin-left: 6px; font-style: normal; font-weight: 500; opacity: .55; font-variant-numeric: tabular-nums; }
+  #f0:checked ~ nav label[for="f0"], #f1:checked ~ nav label[for="f1"], #f2:checked ~ nav label[for="f2"], #f3:checked ~ nav label[for="f3"] { background: var(--ink); color: var(--bg); }
+  #f1:checked ~ main [data-s]:not([data-s="1"]), #f1:checked ~ main h2 { display: none; }
+  #f2:checked ~ main [data-s]:not([data-s="2"]), #f2:checked ~ main h2 { display: none; }
+  #f3:checked ~ main [data-s]:not([data-s="3"]), #f3:checked ~ main h2 { display: none; }
+  .tools { display: none; }
+  .js .tools { display: flex; gap: 8px; padding-top: 12px; }
+  .tools input { flex: 1; min-width: 0; height: 38px; padding: 0 14px; border: 0; border-radius: 11px; background: var(--card);
+                 color: var(--ink); font: inherit; font-size: 16px; outline: none; -webkit-appearance: none; appearance: none; }
+  .tools input:focus { box-shadow: 0 0 0 2px var(--accent); }
+  .tools button { flex: none; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 11px; background: var(--card);
+                  color: var(--ink); font-size: 17px; cursor: pointer; }
+  main { padding-top: 4px; padding-bottom: 8px; }
+  h2 { margin: 22px 2px 10px; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
+  article { margin: 0 0 14px; border-radius: 16px; background: var(--card); overflow: hidden; }
+  article.nomatch { display: none !important; }
+  figure { margin: 0; background: var(--chip); }
+  figure img { display: block; width: 100%; height: auto; }
+  .body { padding: 14px 16px 15px; }
+  .kicker { font-size: 12px; font-weight: 600; color: var(--mute); letter-spacing: .04em; }
+  .num { margin-right: 7px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  h3 { margin: 3px 0 6px; font-size: 18px; line-height: 1.4; }
+  p { margin: 0 0 12px; color: var(--ink2); overflow-wrap: anywhere; }
+  .actions { display: flex; gap: 8px; align-items: center; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; min-width: 0; height: 30px; padding: 0 12px; border: 0;
+          border-radius: 99px; background: var(--chip); color: var(--accent); font: inherit; font-size: 13px; font-weight: 500;
+          text-decoration: none; cursor: pointer; }
+  .host { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .share { display: none; flex: none; color: var(--ink2); }
+  .js .share { display: inline-flex; }
+  .empty { display: none; padding: 48px 0; text-align: center; color: var(--mute); }
+  .empty.on { display: block; }
+  .note { margin: 0 0 14px; padding: 12px 16px; border-radius: 16px; background: var(--card); font-size: 14px; color: var(--mute); }
+  footer { padding-top: 10px; padding-bottom: max(32px, env(safe-area-inset-bottom)); font-size: 12px; color: var(--mute); line-height: 1.7; }
+  .mode-full { display: none; } .js .mode-full { display: inline; } .js .mode-basic { display: none; }
+</style></head><body>
+<header class="col">
+  <div class="eyebrow"><span>2026 年 11 月 14 日</span><a href="../">往期</a></div>
+  <h1>AI 产品动态<span class="ed">晚报</span></h1>
+  <div class="meta">覆盖 11月14日 9:00 – 11月14日 18:42 · 共 8 条</div>
+</header>
+<input class="f" type="radio" name="f" id="f0" checked><input class="f" type="radio" name="f" id="f1"><input class="f" type="radio" name="f" id="f2"><input class="f" type="radio" name="f" id="f3">
+<nav><div class="col"><label for="f0">全部<i>8</i></label><label for="f1">Agent 与产品<i>5</i></label><label for="f2">模型发布<i>2</i></label><label for="f3">公司动态<i>1</i></label></div></nav>
+<div class="tools col">
+  <input id="q" type="search" placeholder="搜索标题、摘要、来源" autocomplete="off" autocapitalize="off" spellcheck="false">
+  <button id="theme" type="button" aria-label="切换深色/浅色" title="切换深色/浅色">◐</button>
+</div>
+<main class="col">
+  
+    <h2 data-s="1">Agent 与产品</h2>
+    
+    <article data-s="1">
+      
+      <div class="body">
+        <div class="kicker"><span class="num">01</span>Agent 与产品</div>
+        <h3>Cloudflare · 开源AI智能体浏览器 Kitesurf</h3>
+        <p>Cloudflare开源专为AI智能体打造的浏览器Kitesurf，代码已托管在GitHub，资源消耗低于Chromium，可供智能体更轻量地浏览和操作网页。</p>
+        <div class="actions">
+          <a class="chip" href="https://github.com/cloudflare/kitesurf" target="_blank" rel="noopener"><span class="host">github.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://github.com/cloudflare/kitesurf" data-title="Cloudflare · 开源AI智能体浏览器 Kitesurf">分享</button>
+        </div>
+      </div>
+    </article>
+    <article data-s="1">
+      
+      <div class="body">
+        <div class="kicker"><span class="num">02</span>Agent 与产品</div>
+        <h3>Google · Gemini接入Google Wallet</h3>
+        <p>Gemini的个人智能功能正式支持Google Wallet，输入@Google Wallet即可询问财务状况和消费情况，通过Plaid授权关联账户后可生成消费图表并协助规划储蓄，该功能仅读取信息、无法转账。</p>
+        <div class="actions">
+          <a class="chip" href="https://www.ithome.com/1/027/141.htm" target="_blank" rel="noopener"><span class="host">ithome.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.ithome.com/1/027/141.htm" data-title="Google · Gemini接入Google Wallet">分享</button>
+        </div>
+      </div>
+    </article>
+    <article data-s="1">
+      <figure><a href="https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/" target="_blank" rel="noopener"><img src="03.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="kicker"><span class="num">03</span>Agent 与产品</div>
+        <h3>Vercel Labs · 开源UI SDK</h3>
+        <p>Vercel Labs发布开源beta版UI SDK，提供50多种UI行为而非成品组件，供AI编码智能体组合出适配React、Vue、Svelte、Solid和Web Components的界面。</p>
+        <div class="actions">
+          <a class="chip" href="https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/" target="_blank" rel="noopener"><span class="host">marktechpost.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.marktechpost.com/2026/11/13/vercel-ui-sdk-agent-ui-behaviors/" data-title="Vercel Labs · 开源UI SDK">分享</button>
+        </div>
+      </div>
+    </article>
+    <article data-s="1">
+      
+      <div class="body">
+        <div class="kicker"><span class="num">04</span>Agent 与产品</div>
+        <h3>Perplexity · Mac版上线AI智能体队友Teammates</h3>
+        <p>Perplexity Mac版为Max订阅用户开放AI智能体功能Teammates，此前仅支持iOS和网页端，智能体可围绕一项职责持续推进营销、错误分类、指标跟踪或市场研究，任务扩大时可引入多个智能体协作。</p>
+        <div class="actions">
+          <a class="chip" href="https://www.ithome.com/1/027/050.htm" target="_blank" rel="noopener"><span class="host">ithome.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.ithome.com/1/027/050.htm" data-title="Perplexity · Mac版上线AI智能体队友Teammates">分享</button>
+        </div>
+      </div>
+    </article>
+    <article data-s="1">
+      <figure><a href="https://x.com/fal/status/2121413439817937017" target="_blank" rel="noopener"><img src="05.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="kicker"><span class="num">05</span>Agent 与产品</div>
+        <h3>fal · fal Agent正式上线</h3>
+        <p>fal推出可在聊天中直接生成素材、编写代码并游玩游戏的fal Agent，从一句提示词到可玩的游戏全程在fal平台完成，同时上线Fable 5.2模型。</p>
+        <div class="actions">
+          <a class="chip" href="https://x.com/fal/status/2121413439817937017" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/fal/status/2121413439817937017" data-title="fal · fal Agent正式上线">分享</button>
+        </div>
+      </div>
+    </article>
+    <h2 data-s="2">模型发布</h2>
+    
+    <article data-s="2">
+      <figure><a href="https://the-decoder.com/runways-open-source-praxis-1-turns-video-ai-into-a-robot-controller/" target="_blank" rel="noopener"><img src="06.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="kicker"><span class="num">06</span>模型发布</div>
+        <h3>Runway · 开源机器人模型Praxis-1</h3>
+        <p>Runway以Apache 2.0许可开源Praxis-1的权重和代码，该模型基于视频训练，可根据相机图像、文本指令和机器人位置信息预测环境变化并计算动作。</p>
+        <div class="actions">
+          <a class="chip" href="https://the-decoder.com/runways-open-source-praxis-1-turns-video-ai-into-a-robot-controller/" target="_blank" rel="noopener"><span class="host">the-decoder.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://the-decoder.com/runways-open-source-praxis-1-turns-video-ai-into-a-robot-controller/" data-title="Runway · 开源机器人模型Praxis-1">分享</button>
+        </div>
+      </div>
+    </article>
+    <article data-s="2">
+      
+      <div class="body">
+        <div class="kicker"><span class="num">07</span>模型发布</div>
+        <h3>清华大学 · 单细胞蛋白组基础模型ProtCell</h3>
+        <p>清华大学自动化系发布ProtCell，汇集约3.8亿个细胞和98个公开数据集用于预训练与评估，并首次在摩尔线程MTT S5000智算卡上完成全流程预训练复现，核心指标与国际主流GPU平台差异仅约0.2%。</p>
+        <div class="actions">
+          <a class="chip" href="https://www.ithome.com/1/027/148.htm" target="_blank" rel="noopener"><span class="host">ithome.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.ithome.com/1/027/148.htm" data-title="清华大学 · 单细胞蛋白组基础模型ProtCell">分享</button>
+        </div>
+      </div>
+    </article>
+    <h2 data-s="3">公司动态</h2>
+    
+    <article data-s="3">
+      
+      <div class="body">
+        <div class="kicker"><span class="num">08</span>公司动态</div>
+        <h3>Microsoft · AI科学家John Langford离职</h3>
+        <p>在微软任职逾14年的AI科学家、AI Frontiers实验室联合创始人John Langford已离职，原因是研究成果看不到落地路径、创新想法难以获得认真考虑。</p>
+        <div class="actions">
+          <a class="chip" href="https://www.ithome.com/1/027/078.htm" target="_blank" rel="noopener"><span class="host">ithome.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.ithome.com/1/027/078.htm" data-title="Microsoft · AI科学家John Langford离职">分享</button>
+        </div>
+      </div>
+    </article>
+  <div class="empty" id="empty">没有匹配的条目</div>
+  
+</main>
+<footer class="col">
+  Hermes 整理 · 配图来自各条来源页面 · 点图片或来源可打开原文
+</footer>
+<script>
+(function () {
+  var root = document.documentElement; root.classList.add('js');
+  var arts = [].slice.call(document.querySelectorAll('article'));
+  var q = document.getElementById('q'), empty = document.getElementById('empty');
+  function apply() {
+    var term = q.value.trim().toLowerCase(), checked = document.querySelector('.f:checked').id.slice(1), shown = 0;
+    arts.forEach(function (a) {
+      var hit = !term || a.textContent.toLowerCase().indexOf(term) >= 0;
+      a.classList.toggle('nomatch', !hit);
+      if (hit && (checked === '0' || a.getAttribute('data-s') === checked)) shown++;
+    });
+    empty.classList.toggle('on', shown === 0);
+  }
+  q.addEventListener('input', apply);
+  [].forEach.call(document.querySelectorAll('.f'), function (r) { r.addEventListener('change', apply); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.share'); if (!b) return;
+    var data = { title: b.getAttribute('data-title'), url: b.getAttribute('data-url') };
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    var done = function () { b.textContent = '已复制链接'; setTimeout(function () { b.textContent = '分享'; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(done, function () {});
+  });
+  var dark = window.matchMedia('(prefers-color-scheme: dark)');
+  try { var saved = localStorage.getItem('digest-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  document.getElementById('theme').addEventListener('click', function () {
+    var now = root.getAttribute('data-theme') || (dark.matches ? 'dark' : 'light');
+    var next = now === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('digest-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body></html>
