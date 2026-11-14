@@ -5,7 +5,7 @@
 <title>AI 产品动态 · 11月14日晚报</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%230a84ff%22%2F%3E%3Cpath%20d%3D%22M17%2021h30M17%2032h30M17%2043h19%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <meta name="robots" content="noindex">
-<meta name="build" content="mwggsfvt">
+<meta name="build" content="mwghk99t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI 产品动态 · 11月14日晚报">
 <meta property="og:description" content="共 13 条 · Anthropic · 官宣启动 IPO；Anthropic · Claude Meetings beta 上线；Anthropic · Claude Duet 邀请全部美国等待名单用户">
@@ -37,6 +37,7 @@
   .search input { width: 100%; height: 42px; padding: 0 16px; border: 0; border-radius: 14px; background: var(--card);
                   color: var(--ink); font: inherit; font-size: 16px; outline: none; -webkit-appearance: none; appearance: none; }
   .search input:focus { box-shadow: 0 0 0 2px var(--accent); }
+  .search input::-webkit-search-cancel-button { display: none; }   /* the button beside the title closes and clears */
   .tag { display: inline-block; padding: 0 8px; border-radius: 99px; color: var(--ed); font-weight: 700; letter-spacing: 0;
          background: var(--chip); background: color-mix(in srgb, var(--ed) 15%, transparent); }
   .kicker { font-size: 12px; font-weight: 600; color: var(--mute); letter-spacing: .04em; }
@@ -50,7 +51,7 @@
   header.bare { padding-top: max(30px, env(safe-area-inset-top)); }
   h1 { font-size: clamp(24px, 7.2vw, 34px); white-space: nowrap; }
   h1 .ed { color: var(--ed); }
-  .tabs { position: sticky; top: 0; z-index: 5; background: var(--bar); border-bottom: .5px solid var(--line);
+  .tabs { position: sticky; top: 0; z-index: 5; background: var(--bar);
           -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); }
   .tabs .col { position: relative; display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
   .tabs .col::-webkit-scrollbar { display: none; }
@@ -124,15 +125,20 @@
 
   /* The overview: a bento of the stories that matter most, then the other headlines.
      One rule for every tile: the picture fills it; the text lies on it at the bottom, 14px in from the
-     sides and 13px up, over a veil that fades out smoothly (see scrim); in the text, one line with the
-     company and a time, then the headline. Only the tile's size and the headline's size change. */
+     sides and 13px up, over a veil in the picture's own colour that fades out upward (see veil); in the
+     text, one line with the company and a time, then the headline. Only the sizes change. */
   .bento { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .duo { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-  .bento a { position: relative; display: block; border-radius: 24px; overflow: hidden; color: #fff;
+  .bento a { position: relative; display: block; border-radius: 24px; overflow: hidden; color: #fff; --tint: 24 24 28;
              background: linear-gradient(160deg, #3a6ff0, #1c1c1e 85%); }
   .bento img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-  .bento .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 14px 13px; background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.572) 8.1%, rgba(0,0,0,0.552) 15.5%, rgba(0,0,0,0.52) 22.5%, rgba(0,0,0,0.478) 29%, rgba(0,0,0,0.43) 35.3%, rgba(0,0,0,0.376) 41.2%, rgba(0,0,0,0.319) 47.1%, rgba(0,0,0,0.261) 52.9%, rgba(0,0,0,0.204) 58.8%, rgba(0,0,0,0.15) 64.7%, rgba(0,0,0,0.101) 71%, rgba(0,0,0,0.06) 77.5%, rgba(0,0,0,0.028) 84.5%, rgba(0,0,0,0.008) 91.9%, rgba(0,0,0,0) 100%);
-               text-shadow: 0 1px 4px rgba(0,0,0,.45); }
+  .bento .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 14px 13px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 92px), rgb(var(--tint) / 0.891) calc(100% - 88.2px), rgb(var(--tint) / 0.867) calc(100% - 84.3px), rgb(var(--tint) / 0.829) calc(100% - 80.5px), rgb(var(--tint) / 0.781) calc(100% - 76.7px), rgb(var(--tint) / 0.726) calc(100% - 72.8px), rgb(var(--tint) / 0.664) calc(100% - 69px), rgb(var(--tint) / 0.6) calc(100% - 65.2px), rgb(var(--tint) / 0.533) calc(100% - 61.3px), rgb(var(--tint) / 0.467) calc(100% - 57.5px), rgb(var(--tint) / 0.402) calc(100% - 53.7px), rgb(var(--tint) / 0.34) calc(100% - 49.8px), rgb(var(--tint) / 0.281) calc(100% - 46px), rgb(var(--tint) / 0.227) calc(100% - 42.2px), rgb(var(--tint) / 0.179) calc(100% - 38.3px), rgb(var(--tint) / 0.136) calc(100% - 34.5px), rgb(var(--tint) / 0.1) calc(100% - 30.7px), rgb(var(--tint) / 0.07) calc(100% - 26.8px), rgb(var(--tint) / 0.046) calc(100% - 23px), rgb(var(--tint) / 0.027) calc(100% - 19.2px), rgb(var(--tint) / 0.015) calc(100% - 15.3px), rgb(var(--tint) / 0.006) calc(100% - 11.5px), rgb(var(--tint) / 0.002) calc(100% - 7.7px), rgb(var(--tint) / 0) calc(100% - 3.8px), rgb(var(--tint) / 0) calc(100% - 0px));
+               text-shadow: 0 1px 3px rgba(0,0,0,.28); }
+  .bento .bare .tx { background: none; }
+  /* a picture that is light where the text goes: a light veil and dark text */
+  .bento .lt { color: #1c1c1e; }
+  .bento .lt .tx { text-shadow: none; }
+  .bento .lt .firm { color: rgba(28,28,30,.62); }
   .bento .firm { display: flex; align-items: center; gap: 7px; margin-bottom: 2px; font-size: 12px; font-weight: 600; line-height: 18px;
                  color: rgba(255,255,255,.78); }
   .bento .firm > span:first-child { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -143,17 +149,16 @@
                font-weight: 700; line-height: 17px; letter-spacing: .01em; font-variant-numeric: tabular-nums; white-space: nowrap; text-shadow: none; }
   /* sizes */
   .hero { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
-  .hero .tx { padding-top: 104px; }
+  .hero .tx { padding-top: 104px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 124px), rgb(var(--tint) / 0.891) calc(100% - 118.8px), rgb(var(--tint) / 0.867) calc(100% - 113.7px), rgb(var(--tint) / 0.829) calc(100% - 108.5px), rgb(var(--tint) / 0.781) calc(100% - 103.3px), rgb(var(--tint) / 0.726) calc(100% - 98.2px), rgb(var(--tint) / 0.664) calc(100% - 93px), rgb(var(--tint) / 0.6) calc(100% - 87.8px), rgb(var(--tint) / 0.533) calc(100% - 82.7px), rgb(var(--tint) / 0.467) calc(100% - 77.5px), rgb(var(--tint) / 0.402) calc(100% - 72.3px), rgb(var(--tint) / 0.34) calc(100% - 67.2px), rgb(var(--tint) / 0.281) calc(100% - 62px), rgb(var(--tint) / 0.227) calc(100% - 56.8px), rgb(var(--tint) / 0.179) calc(100% - 51.7px), rgb(var(--tint) / 0.136) calc(100% - 46.5px), rgb(var(--tint) / 0.1) calc(100% - 41.3px), rgb(var(--tint) / 0.07) calc(100% - 36.2px), rgb(var(--tint) / 0.046) calc(100% - 31px), rgb(var(--tint) / 0.027) calc(100% - 25.8px), rgb(var(--tint) / 0.015) calc(100% - 20.7px), rgb(var(--tint) / 0.006) calc(100% - 15.5px), rgb(var(--tint) / 0.002) calc(100% - 10.3px), rgb(var(--tint) / 0) calc(100% - 5.2px), rgb(var(--tint) / 0) calc(100% - 0px)); }
   .hero .head { font-size: 22px; }
   .wide { grid-column: 1 / -1; height: 140px; }
-  .wide .tx { padding-top: 54px; }
+  .wide .tx { padding-top: 52px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 72px), rgb(var(--tint) / 0.891) calc(100% - 69px), rgb(var(--tint) / 0.867) calc(100% - 66px), rgb(var(--tint) / 0.829) calc(100% - 63px), rgb(var(--tint) / 0.781) calc(100% - 60px), rgb(var(--tint) / 0.726) calc(100% - 57px), rgb(var(--tint) / 0.664) calc(100% - 54px), rgb(var(--tint) / 0.6) calc(100% - 51px), rgb(var(--tint) / 0.533) calc(100% - 48px), rgb(var(--tint) / 0.467) calc(100% - 45px), rgb(var(--tint) / 0.402) calc(100% - 42px), rgb(var(--tint) / 0.34) calc(100% - 39px), rgb(var(--tint) / 0.281) calc(100% - 36px), rgb(var(--tint) / 0.227) calc(100% - 33px), rgb(var(--tint) / 0.179) calc(100% - 30px), rgb(var(--tint) / 0.136) calc(100% - 27px), rgb(var(--tint) / 0.1) calc(100% - 24px), rgb(var(--tint) / 0.07) calc(100% - 21px), rgb(var(--tint) / 0.046) calc(100% - 18px), rgb(var(--tint) / 0.027) calc(100% - 15px), rgb(var(--tint) / 0.015) calc(100% - 12px), rgb(var(--tint) / 0.006) calc(100% - 9px), rgb(var(--tint) / 0.002) calc(100% - 6px), rgb(var(--tint) / 0) calc(100% - 3px), rgb(var(--tint) / 0) calc(100% - 0px)); }
   .wide .head { font-size: 17px; }
   .half { height: 228px; }
   .tall { height: 276px; }   /* two small tiles share this height: 132px each */
   .half .head, .tall .head { -webkit-line-clamp: 3; }
   .mini { flex: 1; min-height: 0; }
-  /* so small that the veil has to span the whole tile for the text to read on a busy picture */
-  .mini .tx { top: 0; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 0; background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.671) 8.1%, rgba(0,0,0,0.647) 15.5%, rgba(0,0,0,0.609) 22.5%, rgba(0,0,0,0.561) 29%, rgba(0,0,0,0.504) 35.3%, rgba(0,0,0,0.441) 41.2%, rgba(0,0,0,0.374) 47.1%, rgba(0,0,0,0.306) 52.9%, rgba(0,0,0,0.239) 58.8%, rgba(0,0,0,0.176) 64.7%, rgba(0,0,0,0.119) 71%, rgba(0,0,0,0.071) 77.5%, rgba(0,0,0,0.033) 84.5%, rgba(0,0,0,0.009) 91.9%, rgba(0,0,0,0) 100%); }
+  .mini .tx { padding-top: 44px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 64px), rgb(var(--tint) / 0.891) calc(100% - 61.3px), rgb(var(--tint) / 0.867) calc(100% - 58.7px), rgb(var(--tint) / 0.829) calc(100% - 56px), rgb(var(--tint) / 0.781) calc(100% - 53.3px), rgb(var(--tint) / 0.726) calc(100% - 50.7px), rgb(var(--tint) / 0.664) calc(100% - 48px), rgb(var(--tint) / 0.6) calc(100% - 45.3px), rgb(var(--tint) / 0.533) calc(100% - 42.7px), rgb(var(--tint) / 0.467) calc(100% - 40px), rgb(var(--tint) / 0.402) calc(100% - 37.3px), rgb(var(--tint) / 0.34) calc(100% - 34.7px), rgb(var(--tint) / 0.281) calc(100% - 32px), rgb(var(--tint) / 0.227) calc(100% - 29.3px), rgb(var(--tint) / 0.179) calc(100% - 26.7px), rgb(var(--tint) / 0.136) calc(100% - 24px), rgb(var(--tint) / 0.1) calc(100% - 21.3px), rgb(var(--tint) / 0.07) calc(100% - 18.7px), rgb(var(--tint) / 0.046) calc(100% - 16px), rgb(var(--tint) / 0.027) calc(100% - 13.3px), rgb(var(--tint) / 0.015) calc(100% - 10.7px), rgb(var(--tint) / 0.006) calc(100% - 8px), rgb(var(--tint) / 0.002) calc(100% - 5.3px), rgb(var(--tint) / 0) calc(100% - 2.7px), rgb(var(--tint) / 0) calc(100% - 0px)); }
   .mini .head { font-size: 13px; }
   /* the other headlines: plain lines on the page, the company a shade stronger than what it did */
   .toc { margin: 30px 2px 0; padding: 0; list-style: none; }
@@ -185,15 +190,15 @@
 <div class="tabs"><div class="col"><a href="#c1" data-c="1">Agent 与产品</a><a href="#c2" data-c="2">模型发布</a><a href="#c3" data-c="3">公司动态</a></div></div>
 <main class="col">
   <div class="bento">
-      <a href="#n12" class="hero"><img src="13.jpg" alt="">
+      <a href="#n12" class="hero" style="--tint: 81 74 61"><img src="13.jpg" alt="">
         <span class="tx"><span class="firm"><span>Anthropic</span><span class="at">19:34</span></span><span class="head">官宣启动 IPO</span></span></a>
       <div class="duo">
-      <a href="#n4" class="mini"><img src="01.jpg" alt="" loading="lazy">
+      <a href="#n4" class="mini lt" style="--tint: 252 253 253"><img src="01.jpg" alt="" loading="lazy">
         <span class="tx"><span class="firm"><span>Cloudflare</span></span><span class="head">开源AI智能体浏览器 Kitesurf</span></span></a>
-      <a href="#n9" class="mini"><img src="12.jpg" alt="" loading="lazy">
+      <a href="#n9" class="mini" style="--tint: 57 81 73"><img src="12.jpg" alt="" loading="lazy">
         <span class="tx"><span class="firm"><span>Anthropic</span><span class="at">19:34</span></span><span class="head">Opus 5.5 成为默认模型</span></span></a>
       </div>
-      <a href="#n1" class="tall"><img src="09.jpg" alt="" loading="lazy">
+      <a href="#n1" class="tall" style="--tint: 116 60 27"><img src="09.jpg" alt="" loading="lazy">
         <span class="tx"><span class="firm"><span>Anthropic</span><span class="at">19:34</span></span><span class="head">Claude Meetings beta 上线</span></span></a>
     </div>
     <ol class="toc">

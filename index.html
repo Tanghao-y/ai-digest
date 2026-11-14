@@ -31,6 +31,7 @@
   .search input { width: 100%; height: 42px; padding: 0 16px; border: 0; border-radius: 14px; background: var(--card);
                   color: var(--ink); font: inherit; font-size: 16px; outline: none; -webkit-appearance: none; appearance: none; }
   .search input:focus { box-shadow: 0 0 0 2px var(--accent); }
+  .search input::-webkit-search-cancel-button { display: none; }   /* the button beside the title closes and clears */
   .tag { display: inline-block; padding: 0 8px; border-radius: 99px; color: var(--ed); font-weight: 700; letter-spacing: 0;
          background: var(--chip); background: color-mix(in srgb, var(--ed) 15%, transparent); }
   .kicker { font-size: 12px; font-weight: 600; color: var(--mute); letter-spacing: .04em; }
@@ -41,8 +42,17 @@
   .empty { display: none; padding: 48px 0; text-align: center; color: var(--mute); }
   .empty.on { display: block; }
   footer { padding-top: 6px; padding-bottom: max(36px, env(safe-area-inset-bottom)); font-size: 12px; color: var(--mute); line-height: 1.7; }
-  header { padding-top: max(30px, env(safe-area-inset-top)); }
-  main { padding-bottom: max(40px, env(safe-area-inset-bottom)); }
+  /* the title bar: sticks 18px higher than it starts, so the air above the title scrolls away and the rest stays */
+  header { position: sticky; top: -18px; z-index: 5; padding: 0; background: var(--bar);
+           -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); }
+  header .row { display: flex; align-items: center; gap: 12px; padding-top: max(30px, env(safe-area-inset-top)); padding-bottom: 12px; }
+  header h1 { flex: 1; min-width: 0; }
+  .find { display: none; flex: none; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 0;
+          border-radius: 50%; background: var(--card); color: var(--ink); cursor: pointer; }
+  .js .find { display: flex; }
+  .find .i-close, .find[aria-expanded="true"] .i-find { display: none; }
+  .find[aria-expanded="true"] .i-close { display: block; }
+  main { padding-top: 4px; padding-bottom: max(40px, env(safe-area-inset-bottom)); }
   /* a day: "今天", "昨天" are written in by script, the date then steps back */
   .day { margin: 40px 2px 14px; font-size: 20px; line-height: 1.3; letter-spacing: -.01em; }
   #list > .day:first-child { margin-top: 10px; }
@@ -50,11 +60,13 @@
   .day.rel span { font-size: 15px; font-weight: 600; color: var(--mute); letter-spacing: 0; }
   .badge { padding: 0 8px; border-radius: 99px; background: var(--ed-solid); color: #fff; font-weight: 700; letter-spacing: 0; text-shadow: none; }
   /* the newest edition */
-  .lead { display: block; border-radius: 24px; background: var(--card); overflow: hidden; }
+  .lead { display: block; border-radius: 24px; background: var(--card); overflow: hidden; --tint: 24 24 28; }
   .lead .pic { position: relative; display: block; aspect-ratio: 16 / 10; background: linear-gradient(160deg, #3a6ff0, #1c1c1e 85%); }
   .lead img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .lead .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 104px 18px 16px; background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.572) 8.1%, rgba(0,0,0,0.552) 15.5%, rgba(0,0,0,0.52) 22.5%, rgba(0,0,0,0.478) 29%, rgba(0,0,0,0.43) 35.3%, rgba(0,0,0,0.376) 41.2%, rgba(0,0,0,0.319) 47.1%, rgba(0,0,0,0.261) 52.9%, rgba(0,0,0,0.204) 58.8%, rgba(0,0,0,0.15) 64.7%, rgba(0,0,0,0.101) 71%, rgba(0,0,0,0.06) 77.5%, rgba(0,0,0,0.028) 84.5%, rgba(0,0,0,0.008) 91.9%, rgba(0,0,0,0) 100%); color: #fff;
-              text-shadow: 0 1px 4px rgba(0,0,0,.45); }
+  .lead .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 104px 18px 16px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 126px), rgb(var(--tint) / 0.891) calc(100% - 120.8px), rgb(var(--tint) / 0.867) calc(100% - 115.5px), rgb(var(--tint) / 0.829) calc(100% - 110.3px), rgb(var(--tint) / 0.781) calc(100% - 105px), rgb(var(--tint) / 0.726) calc(100% - 99.8px), rgb(var(--tint) / 0.664) calc(100% - 94.5px), rgb(var(--tint) / 0.6) calc(100% - 89.2px), rgb(var(--tint) / 0.533) calc(100% - 84px), rgb(var(--tint) / 0.467) calc(100% - 78.8px), rgb(var(--tint) / 0.402) calc(100% - 73.5px), rgb(var(--tint) / 0.34) calc(100% - 68.3px), rgb(var(--tint) / 0.281) calc(100% - 63px), rgb(var(--tint) / 0.227) calc(100% - 57.8px), rgb(var(--tint) / 0.179) calc(100% - 52.5px), rgb(var(--tint) / 0.136) calc(100% - 47.3px), rgb(var(--tint) / 0.1) calc(100% - 42px), rgb(var(--tint) / 0.07) calc(100% - 36.7px), rgb(var(--tint) / 0.046) calc(100% - 31.5px), rgb(var(--tint) / 0.027) calc(100% - 26.3px), rgb(var(--tint) / 0.015) calc(100% - 21px), rgb(var(--tint) / 0.006) calc(100% - 15.8px), rgb(var(--tint) / 0.002) calc(100% - 10.5px), rgb(var(--tint) / 0) calc(100% - 5.2px), rgb(var(--tint) / 0) calc(100% - 0px)); color: #fff;
+              text-shadow: 0 1px 3px rgba(0,0,0,.28); }
+  .lead.lt .tx { color: #1c1c1e; text-shadow: none; }
+  .lead.lt .kicker { color: rgba(28,28,30,.62); }
   .lead .kicker { color: rgba(255,255,255,.78); }
   .lead .t { margin-top: 6px; font-size: 22px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; }
   .lead ul { margin: 0; padding: 6px 18px 0; list-style: none; }
@@ -96,16 +108,16 @@
 <script>document.documentElement.classList.add('js');
   try { localStorage.removeItem('digest-theme'); } catch (e) {}   // left by the old manual theme switch</script>
 </head><body>
-<header class="col">
-  <h1>AI 产品动态</h1>
+<header>
+  <div class="row col"><h1>AI 产品动态</h1><button class="find" id="find" type="button" aria-label="搜索" aria-expanded="false"><svg class="i-find" viewBox="0 0 20 20" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8.6" cy="8.6" r="5.9"/><path d="m13.1 13.1 4.4 4.4"/></svg><svg class="i-close" viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m4.5 4.5 11 11M15.5 4.5l-11 11"/></svg></button></div>
+  <div class="search col" id="search" hidden>
+    <input id="q" type="search" placeholder="搜索" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+  </div>
 </header>
-<div class="search col">
-  <input id="q" type="search" placeholder="搜索" autocomplete="off" autocapitalize="off" spellcheck="false">
-</div>
 <main class="col">
   <div id="list">
     <h2 class="day" data-date="2026-11-14"><span>11月14日 周六</span></h2>
-    <a class="lead pm" href="2026-11-14-pm/">
+    <a class="lead pm" href="2026-11-14-pm/" style="--tint: 81 74 61">
       <span class="pic"><img src="2026-11-14-pm/13.jpg" alt="">
         <span class="tx"><span class="kicker"><span class="badge">晚报</span>13 条 · 19:34 更新</span><span class="t">Anthropic · 官宣启动 IPO</span></span></span>
       <ul><li>Anthropic · Claude Meetings beta 上线</li><li>Anthropic · Claude Duet 邀请全部美国等待名单用户</li><li>Anthropic · Claude Code Projects 支持并行 worker</li></ul>
@@ -166,9 +178,18 @@
     });
     empty.classList.toggle('on', shown === 0);
   }
-  q.addEventListener('focus', load);
+  // The search field is put away until asked for; closing it also ends the search.
+  var find = document.getElementById('find'), field = document.getElementById('search');
+  function show(open, focus) {
+    field.hidden = !open;
+    find.setAttribute('aria-expanded', open ? 'true' : 'false');
+    find.setAttribute('aria-label', open ? '关闭搜索' : '搜索');
+    if (open) { load(); window.scrollTo(0, 0); if (focus) q.focus(); } else { q.value = ''; apply(); }
+  }
+  find.addEventListener('click', function () { show(field.hidden, true); });
   q.addEventListener('input', apply);
-  try { var asked = new URLSearchParams(location.search).get('q'); if (asked) { q.value = asked; apply(); } } catch (e) {}
+  q.addEventListener('keydown', function (e) { if (e.key === 'Escape') show(false); });
+  try { var asked = new URLSearchParams(location.search).get('q'); if (asked) { show(true, false); q.value = asked; apply(); } } catch (e) {}
 })();
 </script>
 </body></html>
