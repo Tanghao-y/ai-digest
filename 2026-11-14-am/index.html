@@ -75,6 +75,9 @@
   .toc li { margin-top: -.5px; border-top: .5px solid var(--line); }
   .toc a { display: flex; gap: 12px; padding: 11px 16px; font-size: 15px; font-weight: 600; line-height: 1.45; }
   .toc .num { flex: none; }
+  .toc .grow { flex: 1; min-width: 0; }
+  .toc .at { flex: none; align-self: center; font-size: 12px; font-weight: 700; color: var(--ed); font-variant-numeric: tabular-nums; }
+  h2.up { color: var(--ed); }
   .num { color: var(--accent); font-variant-numeric: tabular-nums; }
   h2 { margin: 30px 2px 12px; font-size: 22px; line-height: 1.3; letter-spacing: -.01em; }
   article { margin: 0 0 14px; border-radius: 16px; background: var(--card); overflow: hidden; scroll-margin-top: 66px; }
@@ -117,20 +120,20 @@
 <div class="tabs"><div class="col"><label for="f0">全部<i>9</i></label><label for="f1">Agent 与产品<i>4</i></label><label for="f2">模型发布<i>2</i></label><label for="f3">公司动态<i>3</i></label></div></div>
 <main class="col">
   <ol class="toc">
-      <li data-s="1"><a href="#n1"><span class="num">01</span><span>Google · Antigravity /teamwork 多智能体协作</span></a></li>
-      <li data-s="1"><a href="#n2"><span class="num">02</span><span>OpenAI · ChatGPT Wallet 智能体支付</span></a></li>
-      <li data-s="1"><a href="#n3"><span class="num">03</span><span>Sierra · Personal Agent Protocol（Poppy）v1.0</span></a></li>
-      <li data-s="1"><a href="#n4"><span class="num">04</span><span>DeepSeek · 全家桶应用 API 开放</span></a></li>
-      <li data-s="2"><a href="#n5"><span class="num">05</span><span>Edge0 · 开源 145B 端侧模型</span></a></li>
-      <li data-s="2"><a href="#n6"><span class="num">06</span><span>腾讯混元 · Hy Realtime 实时语音模型</span></a></li>
-      <li data-s="3"><a href="#n7"><span class="num">07</span><span>NVIDIA · 黄仁勋辞任 CEO</span></a></li>
-      <li data-s="3"><a href="#n8"><span class="num">08</span><span>Anthropic · Dario 回应 IPO 市场动荡</span></a></li>
-      <li data-s="3"><a href="#n9"><span class="num">09</span><span>Cursor · 安全事件调查结果披露</span></a></li>
+      <li data-s="1"><a href="#n1"><span class="num">01</span><span class="grow">Google · Antigravity /teamwork 多智能体协作</span></a></li>
+      <li data-s="1"><a href="#n2"><span class="num">02</span><span class="grow">OpenAI · ChatGPT Wallet 智能体支付</span></a></li>
+      <li data-s="1"><a href="#n3"><span class="num">03</span><span class="grow">Sierra · Personal Agent Protocol（Poppy）v1.0</span></a></li>
+      <li data-s="1"><a href="#n4"><span class="num">04</span><span class="grow">DeepSeek · 全家桶应用 API 开放</span></a></li>
+      <li data-s="2"><a href="#n5"><span class="num">05</span><span class="grow">Edge0 · 开源 145B 端侧模型</span></a></li>
+      <li data-s="2"><a href="#n6"><span class="num">06</span><span class="grow">腾讯混元 · Hy Realtime 实时语音模型</span></a></li>
+      <li data-s="3"><a href="#n7"><span class="num">07</span><span class="grow">NVIDIA · 黄仁勋辞任 CEO</span></a></li>
+      <li data-s="3"><a href="#n8"><span class="num">08</span><span class="grow">Anthropic · Dario 回应 IPO 市场动荡</span></a></li>
+      <li data-s="3"><a href="#n9"><span class="num">09</span><span class="grow">Cursor · 安全事件调查结果披露</span></a></li>
   </ol>
   
-    <h2 data-s="1">Agent 与产品</h2>
+    <h2 data-g="0">Agent 与产品</h2>
     
-    <article data-s="1" id="n1">
+    <article data-s="1" data-g="0" id="n1">
       <figure><a href="https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/" target="_blank" rel="noopener"><img src="01.jpg" alt=""></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">01</span>Agent 与产品</div>
@@ -142,7 +145,7 @@
         </div>
       </div>
     </article>
-    <article data-s="1" id="n2">
+    <article data-s="1" data-g="0" id="n2">
       <figure><a href="https://openai.com/index/introducing-chatgpt-wallet/" target="_blank" rel="noopener"><img src="02.jpg" alt="" loading="lazy"></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">02</span>Agent 与产品</div>
@@ -154,7 +157,7 @@
         </div>
       </div>
     </article>
-    <article data-s="1" id="n3">
+    <article data-s="1" data-g="0" id="n3">
       <figure><a href="https://sierra.ai/blog/releasing-poppy" target="_blank" rel="noopener"><img src="03.jpg" alt="" loading="lazy"></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">03</span>Agent 与产品</div>
@@ -166,7 +169,7 @@
         </div>
       </div>
     </article>
-    <article data-s="1" id="n4">
+    <article data-s="1" data-g="0" id="n4">
       <figure><a href="https://api-docs.deepseek.com/zh-cn/updates/#发布全家桶应用-api" target="_blank" rel="noopener"><img src="04.jpg" alt="" loading="lazy"></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">04</span>Agent 与产品</div>
@@ -178,9 +181,9 @@
         </div>
       </div>
     </article>
-    <h2 data-s="2">模型发布</h2>
+    <h2 data-g="1">模型发布</h2>
     
-    <article data-s="2" id="n5">
+    <article data-s="2" data-g="1" id="n5">
       
       <div class="body">
         <div class="kicker"><span class="num">05</span>模型发布</div>
@@ -192,7 +195,7 @@
         </div>
       </div>
     </article>
-    <article data-s="2" id="n6">
+    <article data-s="2" data-g="1" id="n6">
       <figure><a href="https://mp.weixin.qq.com/s/bFxAT04ohJs9hPcjjin3bg" target="_blank" rel="noopener"><img src="06.jpg" alt="" loading="lazy"></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">06</span>模型发布</div>
@@ -204,9 +207,9 @@
         </div>
       </div>
     </article>
-    <h2 data-s="3">公司动态</h2>
+    <h2 data-g="2">公司动态</h2>
     
-    <article data-s="3" id="n7">
+    <article data-s="3" data-g="2" id="n7">
       <figure><a href="https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say/" target="_blank" rel="noopener"><img src="07.jpg" alt="" loading="lazy"></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">07</span>公司动态</div>
@@ -218,7 +221,7 @@
         </div>
       </div>
     </article>
-    <article data-s="3" id="n8">
+    <article data-s="3" data-g="2" id="n8">
       
       <div class="body">
         <div class="kicker"><span class="num">08</span>公司动态</div>
@@ -230,7 +233,7 @@
         </div>
       </div>
     </article>
-    <article data-s="3" id="n9">
+    <article data-s="3" data-g="2" id="n9">
       <figure><a href="https://cursor.com/blog/security-incident-update" target="_blank" rel="noopener"><img src="09.jpg" alt="" loading="lazy"></a></figure>
       <div class="body">
         <div class="kicker"><span class="num">09</span>公司动态</div>
@@ -268,8 +271,8 @@
       if (hit && (checked === '0' || a.getAttribute('data-s') === checked)) shown++;
     });
     heads.forEach(function (h) {            // a section with nothing left in it loses its heading
-      var s = h.getAttribute('data-s');
-      h.classList.toggle('nomatch', !arts.some(function (a) { return a.getAttribute('data-s') === s && !a.classList.contains('nomatch'); }));
+      var g = h.getAttribute('data-g');
+      h.classList.toggle('nomatch', !arts.some(function (a) { return a.getAttribute('data-g') === g && !a.classList.contains('nomatch'); }));
     });
     empty.classList.toggle('on', shown === 0);
   }

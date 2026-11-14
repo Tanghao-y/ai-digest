@@ -145,6 +145,7 @@
   }
   q.addEventListener('focus', load);
   q.addEventListener('input', apply);
+  try { var asked = new URLSearchParams(location.search).get('q'); if (asked) { q.value = asked; apply(); } } catch (e) {}
   var dark = window.matchMedia('(prefers-color-scheme: dark)');
   document.getElementById('theme').addEventListener('click', function () {
     var now = root.getAttribute('data-theme') || (dark.matches ? 'dark' : 'light');
