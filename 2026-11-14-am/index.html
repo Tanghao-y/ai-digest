@@ -113,13 +113,13 @@
              background: var(--card); font-size: 15px; font-weight: 600; }
   .pager .next svg { transform: scaleX(-1); }
   .pager svg { flex: none; color: var(--mute); }
-  /* back to the top: floats in the corner, and only once the end of the page is reached */
+  /* back to the top: a plain disc in the page's opposite colour, centred, shown only once the end of the page is reached */
   .totop { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 6; margin-left: -23px;
         display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%;
-        background: var(--bar); color: var(--ink); border: .5px solid var(--line); box-shadow: 0 6px 20px rgba(0,0,0,.18);
-        -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px);
+        background: #000; color: #fff;
         opacity: 0; pointer-events: none; transform: translateY(10px) scale(.9); transition: opacity .2s, transform .2s; }
   .totop.on { opacity: 1; pointer-events: auto; transform: none; }
+  @media (prefers-color-scheme: dark) { .totop { background: #fff; color: #000; } }
   .pager + .totop + footer, .totop + footer { padding-bottom: max(88px, env(safe-area-inset-bottom)); }
 
   /* The overview: a bento of the stories that matter most, then the other headlines.
@@ -131,8 +131,8 @@
   .bento a { position: relative; display: block; border-radius: 24px; overflow: hidden; color: #fff;
              background: linear-gradient(160deg, #3a6ff0, #1c1c1e 85%); }
   .bento img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-  .bento .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 14px 13px; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.809) 8.1%, rgba(0,0,0,0.78) 15.5%, rgba(0,0,0,0.735) 22.5%, rgba(0,0,0,0.676) 29%, rgba(0,0,0,0.608) 35.3%, rgba(0,0,0,0.531) 41.2%, rgba(0,0,0,0.451) 47.1%, rgba(0,0,0,0.369) 52.9%, rgba(0,0,0,0.289) 58.8%, rgba(0,0,0,0.212) 64.7%, rgba(0,0,0,0.143) 71%, rgba(0,0,0,0.085) 77.5%, rgba(0,0,0,0.04) 84.5%, rgba(0,0,0,0.011) 91.9%, rgba(0,0,0,0) 100%);
-               text-shadow: 0 1px 3px rgba(0,0,0,.3); }
+  .bento .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 14px 13px; background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.572) 8.1%, rgba(0,0,0,0.552) 15.5%, rgba(0,0,0,0.52) 22.5%, rgba(0,0,0,0.478) 29%, rgba(0,0,0,0.43) 35.3%, rgba(0,0,0,0.376) 41.2%, rgba(0,0,0,0.319) 47.1%, rgba(0,0,0,0.261) 52.9%, rgba(0,0,0,0.204) 58.8%, rgba(0,0,0,0.15) 64.7%, rgba(0,0,0,0.101) 71%, rgba(0,0,0,0.06) 77.5%, rgba(0,0,0,0.028) 84.5%, rgba(0,0,0,0.008) 91.9%, rgba(0,0,0,0) 100%);
+               text-shadow: 0 1px 4px rgba(0,0,0,.45); }
   .bento .firm { display: flex; align-items: center; gap: 7px; margin-bottom: 2px; font-size: 12px; font-weight: 600; line-height: 18px;
                  color: rgba(255,255,255,.78); }
   .bento .firm > span:first-child { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -148,14 +148,15 @@
   .wide { grid-column: 1 / -1; height: 140px; }
   .wide .tx { padding-top: 54px; }
   .wide .head { font-size: 17px; }
-  .half, .tall { height: 228px; }
+  .half { height: 228px; }
+  .tall { height: 276px; }   /* two small tiles share this height: 132px each */
   .half .head, .tall .head { -webkit-line-clamp: 3; }
   .mini { flex: 1; min-height: 0; }
   /* so small that the veil has to span the whole tile for the text to read on a busy picture */
-  .mini .tx { top: 0; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 0; background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.908) 8.1%, rgba(0,0,0,0.875) 15.5%, rgba(0,0,0,0.824) 22.5%, rgba(0,0,0,0.759) 29%, rgba(0,0,0,0.682) 35.3%, rgba(0,0,0,0.596) 41.2%, rgba(0,0,0,0.506) 47.1%, rgba(0,0,0,0.414) 52.9%, rgba(0,0,0,0.324) 58.8%, rgba(0,0,0,0.238) 64.7%, rgba(0,0,0,0.161) 71%, rgba(0,0,0,0.096) 77.5%, rgba(0,0,0,0.045) 84.5%, rgba(0,0,0,0.012) 91.9%, rgba(0,0,0,0) 100%); }
+  .mini .tx { top: 0; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 0; background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.671) 8.1%, rgba(0,0,0,0.647) 15.5%, rgba(0,0,0,0.609) 22.5%, rgba(0,0,0,0.561) 29%, rgba(0,0,0,0.504) 35.3%, rgba(0,0,0,0.441) 41.2%, rgba(0,0,0,0.374) 47.1%, rgba(0,0,0,0.306) 52.9%, rgba(0,0,0,0.239) 58.8%, rgba(0,0,0,0.176) 64.7%, rgba(0,0,0,0.119) 71%, rgba(0,0,0,0.071) 77.5%, rgba(0,0,0,0.033) 84.5%, rgba(0,0,0,0.009) 91.9%, rgba(0,0,0,0) 100%); }
   .mini .head { font-size: 13px; }
   /* the other headlines: plain lines on the page, the company a shade stronger than what it did */
-  .toc { margin: 18px 2px 0; padding: 0; list-style: none; }
+  .toc { margin: 30px 2px 0; padding: 0; list-style: none; }
   .toc li + li { border-top: .5px solid var(--line); }
   .toc a { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; font-size: 14px; line-height: 1.45; color: var(--ink2); }
   .toc .num { flex: none; font-size: 12px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
