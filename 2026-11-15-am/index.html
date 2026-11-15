@@ -5,7 +5,7 @@
 <title>AI 产品动态 · 11月15日早报</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%230a84ff%22%2F%3E%3Cpath%20d%3D%22M17%2021h30M17%2032h30M17%2043h19%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <meta name="robots" content="noindex">
-<meta name="build" content="mwh96cp0">
+<meta name="build" content="mwhgcrpj">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI 产品动态 · 11月15日早报">
 <meta property="og:description" content="共 7 条 · 三星 · One UI 9.5 系统级智能体 Personal Agent Core；Cmpnd · 开源 dspy-wsp 优化器；字节跳动 · Seedream 5.0 Pro 上线 fal 美国托管">
@@ -53,8 +53,19 @@
   h1 .ed { color: var(--ed); }
   .tabs { position: sticky; top: 0; z-index: 5; background: var(--bar);
           -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); }
-  .tabs .col { position: relative; display: flex; gap: 8px; padding-top: 10px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
-  .tabs .col::-webkit-scrollbar { display: none; }
+  .tabs .col { display: flex; align-items: center; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
+  .tabs .strip { position: relative; flex: 1; min-width: 0; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .tabs .strip::-webkit-scrollbar { display: none; }
+  /* refresh: the same disc as back to the top, at the right end of the tabs (owner's devices only) */
+  .refresh { flex: none; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; padding: 0; border: 0;
+             border-radius: 50%; background: #000; color: #fff; cursor: pointer; }
+  .refresh.busy svg { animation: spin .9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .refresh.busy svg { animation: none; } .refresh.busy { opacity: .5; } }
+  .toast { position: fixed; left: 50%; top: max(12px, env(safe-area-inset-top)); z-index: 7; display: flex; align-items: center;
+           height: 46px; padding: 0 20px; border-radius: 99px; background: #000; color: #fff; font-size: 15px; font-weight: 600; white-space: nowrap;
+           opacity: 0; pointer-events: none; transform: translate(-50%, -10px) scale(.9); transition: opacity .2s, transform .2s; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
   .tabs a { flex: none; padding: 6px 13px; border-radius: 99px; background: var(--card); color: var(--ink2);
             font-size: 14px; font-weight: 600; transition: background-color .2s, color .2s; }
   .tabs a.on { background: var(--ink); color: var(--bg); }
@@ -120,7 +131,7 @@
         background: #000; color: #fff;
         opacity: 0; pointer-events: none; transform: translateY(10px) scale(.9); transition: opacity .2s, transform .2s; }
   .totop.on { opacity: 1; pointer-events: auto; transform: none; }
-  @media (prefers-color-scheme: dark) { .totop { background: #fff; color: #000; } }
+  @media (prefers-color-scheme: dark) { .totop, .refresh, .toast { background: #fff; color: #000; } }
   .pager + .totop + footer, .totop + footer { padding-bottom: max(88px, env(safe-area-inset-bottom)); }
 
   /* The overview: a bento of the stories that matter most, then the other headlines.
@@ -189,7 +200,7 @@
   <div class="bar"><a class="back" href="../"><svg viewBox="0 0 12 20" width="10" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 2 10l8 8"/></svg><span>往期</span></a></div>
   <h1>11月15日 · 周日 <span class="ed">早报</span></h1>
 </header>
-<div class="tabs"><div class="col"><a href="#c1" data-c="1">Agent 与产品</a><a href="#c2" data-c="2">模型发布</a><a href="#c3" data-c="3">公司动态</a></div></div>
+<div class="tabs"><div class="col"><nav class="strip"><a href="#c1" data-c="1">Agent 与产品</a><a href="#c2" data-c="2">模型发布</a><a href="#c3" data-c="3">公司动态</a></nav></div></div>
 <main class="col">
   <div class="bento">
       <a href="#n1" class="hero" style="--tint-day: 85 84 84; --tint-night: 59 59 59"><img src="07.jpg" alt="">
@@ -347,7 +358,7 @@
 
   (function () {
     var KEY = 'digest-vote-token', API = 'https://api.github.com/repos/Tanghao-y/ai-digest-votes', FILE = API + '/contents/votes/2026-11-15-am.json';
-    var THUMB = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>';
+    var THUMB = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>', REFRESH = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>';
     var votes = {}, sha = null, queue = Promise.resolve();
     function token() { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } }
     function call(url, tok, opts) {
@@ -408,9 +419,63 @@
         a.querySelector('.actions').appendChild(box);
       });
     }
+    function toast(text) {
+      var t = document.createElement('div'); t.className = 'toast'; t.textContent = text;
+      document.body.appendChild(t);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { t.classList.add('on'); }); });
+      setTimeout(function () { t.classList.remove('on'); setTimeout(function () { t.remove(); }, 300); }, 2200);
+    }
+    // Refresh: write a request, then look for the answer to it every few seconds. The request is
+    // remembered on this device, so the wait goes on after a reload or on coming back to the page.
+    function refresh() {
+      var REQ = API + '/contents/refresh/request.json', RES = API + '/contents/refresh/result.json';
+      var PEND = 'digest-refresh', WAIT = 12 * 60000, mine = null, timer = null;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'refresh'; b.setAttribute('aria-label', '刷新'); b.innerHTML = REFRESH;
+      document.querySelector('.tabs .col').appendChild(b);
+      function pending() {
+        var p = mine;
+        try { p = JSON.parse(localStorage.getItem(PEND) || 'null') || mine; } catch (e) {}
+        return p && Date.now() - Date.parse(p.at) < WAIT ? p : null;
+      }
+      function finish(text) {
+        clearTimeout(timer); mine = null;
+        try { localStorage.removeItem(PEND); } catch (e) {}
+        b.classList.remove('busy');
+        if (text) toast(text);
+      }
+      function poll() {
+        var p = pending();
+        if (!p) { finish('刷新失败'); return; }
+        call(RES, token()).then(function (r) {
+          return r.ok ? r.json().then(function (f) { return JSON.parse(unpack(f.content)); }) : null;
+        }).then(function (res) {
+          if (!res || res.id !== p.id) { timer = setTimeout(poll, 6000); return; }
+          if (res.status === 'new' && res.url) { finish(); location.href = res.url + '?r=' + p.id; }
+          else finish(res.status === 'none' ? '暂无新资讯' : '刷新失败');
+        }, function () { timer = setTimeout(poll, 6000); });
+      }
+      b.addEventListener('click', function () {
+        if (b.classList.contains('busy')) return;
+        b.classList.add('busy');
+        var p = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), at: new Date().toISOString() };
+        call(REQ, token()).then(function (r) {
+          return r.ok ? r.json().then(function (f) { return f.sha; }) : null;
+        }).then(function (sha) {
+          var body = { message: 'refresh ' + p.id, content: pack(JSON.stringify(p)) };
+          if (sha) body.sha = sha;
+          return call(REQ, token(), { method: 'PUT', body: JSON.stringify(body) });
+        }).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          mine = p;
+          try { localStorage.setItem(PEND, JSON.stringify(p)); } catch (e) {}
+          timer = setTimeout(poll, 15000);
+        }).catch(function () { finish('刷新失败'); });
+      });
+      if (pending()) { b.classList.add('busy'); poll(); }
+    }
     function start() {
       if (!token()) return;
-      call(API, token()).then(function (r) { if (!r.ok) throw new Error(r.status); return load(); })
+      call(API, token()).then(function (r) { if (!r.ok) throw new Error(r.status); refresh(); return load(); })
         .then(function () { mount(); paint(); }).catch(function () {});
     }
 
@@ -446,7 +511,7 @@
   })();
 
   // The tabs follow the reading position: the category being read is highlighted and kept in view.
-  var bar = document.querySelector('.tabs'), strip = bar.querySelector('.col');
+  var bar = document.querySelector('.tabs'), strip = bar.querySelector('.strip');
   var links = [].slice.call(strip.querySelectorAll('a')), heads = [].slice.call(document.querySelectorAll('.cat'));
   var current = null, queued = false, up = document.querySelector('.totop');
   function spy() {
