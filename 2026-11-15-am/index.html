@@ -423,10 +423,10 @@
       var t = document.createElement('div'); t.className = 'toast'; t.textContent = text;
       document.body.appendChild(t);
       requestAnimationFrame(function () { requestAnimationFrame(function () { t.classList.add('on'); }); });
-      setTimeout(function () { t.classList.remove('on'); setTimeout(function () { t.remove(); }, 300); }, 2200);
+      setTimeout(function () { t.classList.remove('on'); setTimeout(function () { t.remove(); }, 300); }, 5000);
     }
     // Refresh: write a request for Hermes (refresh/request.json, see refresh.mjs). The icon turns for
-    // at least 5 s, then 稍后更新: the news reaches the next edition a few minutes later.
+    // at least 3 s, then 稍后更新: the news reaches the next edition a few minutes later.
     function refresh() {
       var REQ = API + '/contents/refresh/request.json';
       var b = document.createElement('button'); b.type = 'button'; b.className = 'refresh'; b.setAttribute('aria-label', '刷新'); b.innerHTML = REFRESH;
@@ -435,7 +435,7 @@
         if (b.classList.contains('busy')) return;
         b.classList.add('busy');
         var p = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), at: new Date().toISOString() };
-        var spun = new Promise(function (ok) { setTimeout(ok, 5000); });
+        var spun = new Promise(function (ok) { setTimeout(ok, 3000); });
         var sent = call(REQ, token()).then(function (r) {
           return r.ok ? r.json().then(function (f) { return f.sha; }) : null;
         }).then(function (sha) {
