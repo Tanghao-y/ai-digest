@@ -5,12 +5,13 @@
 <title>AI 产品动态 · 11月16日晚报</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%230a84ff%22%2F%3E%3Cpath%20d%3D%22M17%2021h30M17%2032h30M17%2043h19%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <meta name="robots" content="noindex">
-<meta name="build" content="mwj7r3o3">
+<meta name="build" content="mwjgfgkd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AI 产品动态 · 11月16日晚报">
-<meta property="og:description" content="共 5 条 · 腾讯混元 · Hy4 flash 发布；Hark · Handoff² 计算机操作智能体；xAI · Grok API 文本水印默认关闭">
+<meta property="og:description" content="共 9 条 · Anthropic · 智能体记忆研究：关键是知道该忘什么；OpenAI · ChatGPT for Healthcare 新增 computer-use 智能体与医疗插件；Google · Ask Maps 上线代理式预约与行程规划">
 <meta property="og:url" content="https://tanghao-y.github.io/ai-digest/2026-11-16-pm/">
-
+<meta property="og:image" content="https://tanghao-y.github.io/ai-digest/2026-11-16-pm/06.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root { --bg: #f2f2f7; --card: #fff; --ink: #1c1c1e; --ink2: #3a3a3c; --mute: #8e8e93; --line: rgba(60,60,67,.14);
           --chip: #eef0f4; --accent: #0a84ff; --on-accent: #fff; --bar: rgba(242,242,247,.86); --am: #e07b00; --pm: #5856d6;
@@ -202,36 +203,89 @@
 <div class="tabs"><div class="col"><nav class="strip"><a href="#c1" data-c="1">Agent 与产品</a><a href="#c2" data-c="2">模型发布</a></nav></div></div>
 <main class="col">
   <div class="bento">
-      <a href="#n3" class="hero bare">
-        <span class="tx"><span class="firm"><span>腾讯混元 · <time datetime="2026-11-16T04:29:00.000Z">11月16日 12:29</time></span></span><span class="head">Hy4 flash 发布</span></span></a>
+      <a href="#n1" class="hero" style="--tint-day: 178 75 42; --tint-night: 124 52 29"><img src="06.jpg" alt="">
+        <span class="tx"><span class="firm"><span>Anthropic</span><span class="at">11月17日 0:04</span></span><span class="head">智能体记忆研究：关键是知道该忘什么</span></span></a>
+      <a href="#n2" class="wide" style="--tint-day: 28 120 101; --tint-night: 20 87 73"><img src="07.jpg" alt="" loading="lazy">
+        <span class="tx"><span class="firm"><span>OpenAI</span><span class="at">11月17日 0:04</span></span><span class="head">ChatGPT for Healthcare 新增 computer-use 智能体与医疗插件</span></span></a>
     </div>
     <ol class="toc">
-      <li><a href="#n1"><span class="num">01</span><span class="grow"><span class="firm">Hark</span>Handoff² 计算机操作智能体</span><time datetime="2026-11-16T09:08:00.000Z">11月16日 17:08</time></a></li>
-      <li><a href="#n5"><span class="num">02</span><span class="grow"><span class="firm">阿里巴巴</span>Qwen4-Max 上线千问APP</span><span class="at">12:50</span></a></li>
-      <li><a href="#n2"><span class="num">03</span><span class="grow"><span class="firm">xAI</span>Grok API 文本水印默认关闭</span><time datetime="2026-11-16T07:01:00.000Z">11月16日 15:01</time></a></li>
-      <li><a href="#n4"><span class="num">04</span><span class="grow"><span class="firm">字节跳动</span>Seedance 2.5 4K API 全面开放</span><time datetime="2026-11-16T07:23:00.000Z">11月16日 15:23</time></a></li>
+      <li><a href="#n7"><span class="num">01</span><span class="grow"><span class="firm">腾讯混元</span>Hy4 flash 发布</span><time datetime="2026-11-16T04:29:00.000Z">11月16日 12:29</time></a></li>
+      <li><a href="#n5"><span class="num">02</span><span class="grow"><span class="firm">Hark</span>Handoff² 计算机操作智能体</span><time datetime="2026-11-16T09:08:00.000Z">11月16日 17:08</time></a></li>
+      <li><a href="#n9"><span class="num">03</span><span class="grow"><span class="firm">阿里巴巴</span>Qwen4-Max 上线千问APP</span><span class="at">12:50</span></a></li>
+      <li><a href="#n3"><span class="num">04</span><span class="grow"><span class="firm">Google</span>Ask Maps 上线代理式预约与行程规划</span><span class="at">11月17日 0:04</span></a></li>
+      <li><a href="#n4"><span class="num">05</span><span class="grow"><span class="firm">Lovable</span>推出 Drafts 并行试验功能</span><span class="at">11月17日 0:04</span></a></li>
+      <li><a href="#n6"><span class="num">06</span><span class="grow"><span class="firm">xAI</span>Grok API 文本水印默认关闭</span><time datetime="2026-11-16T07:01:00.000Z">11月16日 15:01</time></a></li>
+      <li><a href="#n8"><span class="num">07</span><span class="grow"><span class="firm">字节跳动</span>Seedance 2.5 4K API 全面开放</span><time datetime="2026-11-16T07:23:00.000Z">11月16日 15:23</time></a></li>
     </ol>
   
     <h3 class="cat" data-c="1" id="c1">Agent 与产品</h3>
     
-    <article id="n1" data-k="z4gh66" data-cat="Agent 与产品">
+    <article id="n1" data-k="19czm23" data-cat="Agent 与产品">
+      <figure class="gal"><div class="slides"><a href="https://the-decoder.com/anthropic-says-the-key-to-agent-memory-is-knowing-what-to-forget-not-how-much-to-store/" target="_blank" rel="noopener"><img src="06.jpg" alt=""></a><a href="https://the-decoder.com/anthropic-says-the-key-to-agent-memory-is-knowing-what-to-forget-not-how-much-to-store/" target="_blank" rel="noopener"><img src="06-2.jpg" alt="" loading="lazy"></a><a href="https://the-decoder.com/anthropic-says-the-key-to-agent-memory-is-knowing-what-to-forget-not-how-much-to-store/" target="_blank" rel="noopener"><img src="06-3.jpg" alt="" loading="lazy"></a><a href="https://the-decoder.com/anthropic-says-the-key-to-agent-memory-is-knowing-what-to-forget-not-how-much-to-store/" target="_blank" rel="noopener"><img src="06-4.jpg" alt="" loading="lazy"></a></div><span class="dots"><i class="on"></i><i></i><i></i><i></i></span></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-16T15:25:00.000Z">11月16日 23:25</time><span class="new">11月17日 0:04 更新</span></div>
+        <h4>Anthropic · 智能体记忆研究：关键是知道该忘什么</h4>
+        <input class="x" type="checkbox" id="m1"><label class="sum" for="m1"><p>Anthropic 发布研究文章探讨 Claude 跨会话记忆：选择性笔记优于全量存档。在宝可梦红测试中，只全量记录约 413 个文件的 Sonnet 3.7 只拿到 1 枚徽章，只记策略与已验证规则的 Fable 5 拿到 4 枚，说明长期记忆的取舍比容量更重要。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://the-decoder.com/anthropic-says-the-key-to-agent-memory-is-knowing-what-to-forget-not-how-much-to-store/" target="_blank" rel="noopener"><span class="host">the-decoder.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://the-decoder.com/anthropic-says-the-key-to-agent-memory-is-knowing-what-to-forget-not-how-much-to-store/" data-title="Anthropic · 智能体记忆研究：关键是知道该忘什么">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n2" data-k="669qg6" data-cat="Agent 与产品">
+      <figure><a href="https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare" target="_blank" rel="noopener"><img src="07.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-16T06:00:00.000Z">11月16日 14:00</time><span class="new">11月17日 0:04 更新</span></div>
+        <h4>OpenAI · ChatGPT for Healthcare 新增 computer-use 智能体与医疗插件</h4>
+        <input class="x" type="checkbox" id="m2"><label class="sum" for="m2"><p>OpenAI 给 ChatGPT for Healthcare 新增 computer-use 智能体、改进的临床回答和可跨医疗软件工作的新医疗插件，让智能体在实际医疗工作场景中操作软件完成真实任务。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare" target="_blank" rel="noopener"><span class="host">openai.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare" data-title="OpenAI · ChatGPT for Healthcare 新增 computer-use 智能体与医疗插件">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n3" data-k="17u6nd4" data-cat="Agent 与产品">
+      <figure><a href="https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026/" target="_blank" rel="noopener"><img src="08.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-16T14:00:00.000Z">11月16日 22:00</time><span class="new">11月17日 0:04 更新</span></div>
+        <h4>Google · Ask Maps 上线代理式预约与行程规划</h4>
+        <input class="x" type="checkbox" id="m3"><label class="sum" for="m3"><p>Google 给 Maps 里的 Gemini 驱动助手 Ask Maps 加了分日行程规划和代理式预约（美甲、宠物护理等先在美国上线），行程可分享或导出到 Google Docs，覆盖 200 多个国家。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026/" target="_blank" rel="noopener"><span class="host">blog.google</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026/" data-title="Google · Ask Maps 上线代理式预约与行程规划">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n4" data-k="b150m5" data-cat="Agent 与产品">
+      <figure class="gal"><div class="slides"><a href="https://lovable.dev/blog/introducing-drafts" target="_blank" rel="noopener"><img src="09.jpg" alt="" loading="lazy"></a><a href="https://lovable.dev/blog/introducing-drafts" target="_blank" rel="noopener"><img src="09-2.jpg" alt="" loading="lazy"></a></div><span class="dots"><i class="on"></i><i></i></span></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-16T13:30:00.000Z">11月16日 21:30</time><span class="new">11月17日 0:04 更新</span></div>
+        <h4>Lovable · 推出 Drafts 并行试验功能</h4>
+        <input class="x" type="checkbox" id="m4"><label class="sum" for="m4"><p>Lovable 上线 Drafts：可为应用创建从设计到数据库的完整副本，与线上版本隔离并行试验不同想法，每个 Draft 拥有独立聊天和预览，接受后仍可在发布前通过 History 回滚。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://lovable.dev/blog/introducing-drafts" target="_blank" rel="noopener"><span class="host">lovable.dev</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://lovable.dev/blog/introducing-drafts" data-title="Lovable · 推出 Drafts 并行试验功能">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n5" data-k="z4gh66" data-cat="Agent 与产品">
       
       <div class="body">
         <div class="meta"><time datetime="2026-11-16T09:08:00.000Z">11月16日 17:08</time></div>
         <h4>Hark · Handoff² 计算机操作智能体</h4>
-        <input class="x" type="checkbox" id="m1"><label class="sum" for="m1"><p>Hark 在 Hark Pro 里发布第二代计算机操作智能体 Handoff²，端到端平均速度约为第一代的 2 倍，航班预订最高提速 3.8 倍，长研究任务超过 5 倍。</p><span class="more">更多</span></label>
+        <input class="x" type="checkbox" id="m5"><label class="sum" for="m5"><p>Hark 在 Hark Pro 里发布第二代计算机操作智能体 Handoff²，端到端平均速度约为第一代的 2 倍，航班预订最高提速 3.8 倍，长研究任务超过 5 倍。</p><span class="more">更多</span></label>
         <div class="actions">
           <a class="chip" href="https://www.marktechpost.com/2026/11/16/hark-handoff-2-computer-use-agent-2x-faster/" target="_blank" rel="noopener"><span class="host">marktechpost.com</span><span>↗</span></a>
           <button class="chip share" type="button" data-url="https://www.marktechpost.com/2026/11/16/hark-handoff-2-computer-use-agent-2x-faster/" data-title="Hark · Handoff² 计算机操作智能体">分享</button>
         </div>
       </div>
     </article>
-    <article id="n2" data-k="ndallb" data-cat="Agent 与产品">
+    <article id="n6" data-k="ndallb" data-cat="Agent 与产品">
       
       <div class="body">
         <div class="meta"><time datetime="2026-11-16T07:01:00.000Z">11月16日 15:01</time></div>
         <h4>xAI · Grok API 文本水印默认关闭</h4>
-        <input class="x" type="checkbox" id="m2"><label class="sum" for="m2"><p>Grok 的文本水印在 xAI API 中改为默认关闭，只有法律要求或用户主动开启时才会加水印。</p><span class="more">更多</span></label>
+        <input class="x" type="checkbox" id="m6"><label class="sum" for="m6"><p>Grok 的文本水印在 xAI API 中改为默认关闭，只有法律要求或用户主动开启时才会加水印。</p><span class="more">更多</span></label>
         <div class="actions">
           <a class="chip" href="https://x.com/elonmusk/status/2122223599079559603" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
           <button class="chip share" type="button" data-url="https://x.com/elonmusk/status/2122223599079559603" data-title="xAI · Grok API 文本水印默认关闭">分享</button>
@@ -240,36 +294,36 @@
     </article>
     <h3 class="cat" data-c="2" id="c2">模型发布</h3>
     
-    <article id="n3" data-k="1n3uc0c" data-cat="模型发布">
+    <article id="n7" data-k="1n3uc0c" data-cat="模型发布">
       
       <div class="body">
         <div class="meta"><time datetime="2026-11-16T04:29:00.000Z">11月16日 12:29</time></div>
         <h4>腾讯混元 · Hy4 flash 发布</h4>
-        <input class="x" type="checkbox" id="m3"><label class="sum" for="m3"><p>腾讯混元发布日常生产力定位的 Hy4 flash，总参数 224B、每 token 激活 12B，支持多模态和 1M 上下文；官方盲测表现与 Claude Haiku 5.5（high）相当而任务成本降 18 倍，API 输入约 0.5 元、输出约 2 元每百万 tokens。</p><span class="more">更多</span></label>
+        <input class="x" type="checkbox" id="m7"><label class="sum" for="m7"><p>腾讯混元发布日常生产力定位的 Hy4 flash，总参数 224B、每 token 激活 12B，支持多模态和 1M 上下文；官方盲测表现与 Claude Haiku 5.5（high）相当而任务成本降 18 倍，API 输入约 0.5 元、输出约 2 元每百万 tokens。</p><span class="more">更多</span></label>
         <div class="actions">
           <a class="chip" href="https://hunyuan.tencent.com/research/100145?langVersion=zh" target="_blank" rel="noopener"><span class="host">hunyuan.tencent.com</span><span>↗</span></a>
           <button class="chip share" type="button" data-url="https://hunyuan.tencent.com/research/100145?langVersion=zh" data-title="腾讯混元 · Hy4 flash 发布">分享</button>
         </div>
       </div>
     </article>
-    <article id="n4" data-k="mi22nq" data-cat="模型发布">
+    <article id="n8" data-k="mi22nq" data-cat="模型发布">
       
       <div class="body">
         <div class="meta"><time datetime="2026-11-16T07:23:00.000Z">11月16日 15:23</time></div>
         <h4>字节跳动 · Seedance 2.5 4K API 全面开放</h4>
-        <input class="x" type="checkbox" id="m4"><label class="sum" for="m4"><p>火山引擎全面开放 Seedance 2.5 4K 视频生成模型 API，支持 480P 草稿先验分镜再生成 4K 正片、10-bit 色深，主打人物表情与细节表现。</p><span class="more">更多</span></label>
+        <input class="x" type="checkbox" id="m8"><label class="sum" for="m8"><p>火山引擎全面开放 Seedance 2.5 4K 视频生成模型 API，支持 480P 草稿先验分镜再生成 4K 正片、10-bit 色深，主打人物表情与细节表现。</p><span class="more">更多</span></label>
         <div class="actions">
           <a class="chip" href="https://www.ithome.com/1/027/736.htm" target="_blank" rel="noopener"><span class="host">ithome.com</span><span>↗</span></a>
           <button class="chip share" type="button" data-url="https://www.ithome.com/1/027/736.htm" data-title="字节跳动 · Seedance 2.5 4K API 全面开放">分享</button>
         </div>
       </div>
     </article>
-    <article id="n5" data-k="6da92k" data-cat="模型发布">
+    <article id="n9" data-k="6da92k" data-cat="模型发布">
       
       <div class="body">
         <div class="meta"><time datetime="2026-11-16T04:30:00.000Z">11月16日 12:30</time><span class="new">12:50 更新</span></div>
         <h4>阿里巴巴 · Qwen4-Max 上线千问APP</h4>
-        <input class="x" type="checkbox" id="m5"><label class="sum" for="m5"><p>Qwen4-Max 本次新进展：已上线千问APP，上线期间会员限免体验、使用不消耗会员额度（早报已发布其正式发布与定价，此次新增的是APP落地与限免活动）。</p><span class="more">更多</span></label>
+        <input class="x" type="checkbox" id="m9"><label class="sum" for="m9"><p>Qwen4-Max 本次新进展：已上线千问APP，上线期间会员限免体验、使用不消耗会员额度（早报已发布其正式发布与定价，此次新增的是APP落地与限免活动）。</p><span class="more">更多</span></label>
         <div class="actions">
           <a class="chip" href="https://mp.weixin.qq.com/s/Osjnqqa62HLFl3JoseUt8A" target="_blank" rel="noopener"><span class="host">mp.weixin.qq.com</span><span>↗</span></a>
           <button class="chip share" type="button" data-url="https://mp.weixin.qq.com/s/Osjnqqa62HLFl3JoseUt8A" data-title="阿里巴巴 · Qwen4-Max 上线千问APP">分享</button>
