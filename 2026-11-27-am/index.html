@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN" class="am"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>AI 产品动态 · 11月27日早报</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22%230a84ff%22%2F%3E%3Cpath%20d%3D%22M17%2021h30M17%2032h30M17%2043h19%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<meta name="robots" content="noindex">
+<meta name="build" content="mwy9zqrr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 产品动态 · 11月27日早报">
+<meta property="og:description" content="共 10 条 · Perplexity · Orchestrator API 开放全部主流模型；OpenAI · 修复 GPT-6.2 计费错误；Anthropic · Messages API 改用 Rust 重写">
+<meta property="og:url" content="https://tanghao-y.github.io/ai-digest/2026-11-27-am/">
+<meta property="og:image" content="https://tanghao-y.github.io/ai-digest/2026-11-27-am/01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root { --bg: #f2f2f7; --card: #fff; --ink: #1c1c1e; --ink2: #3a3a3c; --mute: #8e8e93; --line: rgba(60,60,67,.14);
+          --chip: #eef0f4; --accent: #0a84ff; --on-accent: #fff; --bar: rgba(242,242,247,.86); --am: #e07b00; --pm: #5856d6;
+          --am-solid: #e07b00; --pm-solid: #5856d6; }
+  @media (prefers-color-scheme: dark) { :root {
+          --bg: #000; --card: #1c1c1e; --ink: #f2f2f7; --ink2: #d1d1d6; --line: rgba(235,235,245,.16);
+          --chip: #2c2c2e; --bar: rgba(0,0,0,.8); --am: #ff9f0a; --pm: #8e8cff; } }
+  .am { --ed: var(--am); --ed-solid: var(--am-solid); } .pm { --ed: var(--pm); --ed-solid: var(--pm-solid); }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  [hidden] { display: none !important; }
+  .col { max-width: 640px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+  header { padding-top: max(14px, env(safe-area-inset-top)); padding-bottom: 16px; }
+  .bar { display: flex; align-items: center; gap: 8px; min-height: 36px; margin-bottom: 18px; }
+  .back { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px 0 11px; border-radius: 99px;
+          background: var(--card); color: var(--ink); font-size: 15px; font-weight: 600; }
+  h1 { margin: 0; font-size: 34px; line-height: 1.2; letter-spacing: -.02em; }
+  .search { display: none; padding-bottom: 14px; }
+  .js .search { display: block; }
+  .search input { width: 100%; height: 42px; padding: 0 16px; border: 0; border-radius: 14px; background: var(--card);
+                  color: var(--ink); font: inherit; font-size: 16px; outline: none; -webkit-appearance: none; appearance: none; }
+  .search input:focus { box-shadow: 0 0 0 2px var(--accent); }
+  .search input::-webkit-search-cancel-button { display: none; }   /* the button beside the title closes and clears */
+  .tag { display: inline-block; padding: 0 8px; border-radius: 99px; color: var(--ed); font-weight: 700; letter-spacing: 0;
+         background: var(--chip); background: color-mix(in srgb, var(--ed) 15%, transparent); }
+  .kicker { font-size: 12px; font-weight: 600; color: var(--mute); letter-spacing: .04em; }
+  .chip { display: inline-flex; align-items: center; gap: 5px; min-width: 0; max-width: 100%; height: 30px; padding: 0 12px; border: 0;
+          border-radius: 99px; background: var(--chip); color: var(--accent); font: inherit; font-size: 13px; font-weight: 500;
+          cursor: pointer; }
+  .host { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .empty { display: none; padding: 48px 0; text-align: center; color: var(--mute); }
+  .empty.on { display: block; }
+  footer { padding-top: 6px; padding-bottom: max(36px, env(safe-area-inset-bottom)); font-size: 12px; color: var(--mute); line-height: 1.7; }
+  header.bare { padding-top: max(30px, env(safe-area-inset-top)); }
+  h1 { font-size: clamp(24px, 7.2vw, 34px); white-space: nowrap; }
+  h1 .ed { color: var(--ed); }
+  .tabs { position: sticky; top: 0; z-index: 5; background: var(--bar);
+          -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); }
+  .tabs .col { display: flex; align-items: center; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
+  .tabs .strip { position: relative; flex: 1; min-width: 0; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .tabs .strip::-webkit-scrollbar { display: none; }
+  /* refresh: the same disc as back to the top, at the right end of the tabs (owner's devices only) */
+  .refresh { flex: none; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; padding: 0; border: 0;
+             border-radius: 50%; background: #000; color: #fff; cursor: pointer; }
+  .refresh.busy svg { animation: spin .9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .refresh.busy svg { animation: none; } .refresh.busy { opacity: .5; } }
+  .toast { position: fixed; left: 50%; top: max(12px, env(safe-area-inset-top)); z-index: 7; display: flex; align-items: center;
+           height: 46px; padding: 0 20px; border-radius: 99px; background: #000; color: #fff; font-size: 15px; font-weight: 600; white-space: nowrap;
+           opacity: 0; pointer-events: none; transform: translate(-50%, -10px) scale(.9); transition: opacity .2s, transform .2s; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  .tabs a { flex: none; padding: 6px 13px; border-radius: 99px; background: var(--card); color: var(--ink2);
+            font-size: 14px; font-weight: 600; transition: background-color .2s, color .2s; }
+  .tabs a.on { background: var(--ink); color: var(--bg); }
+  main { padding-top: 16px; padding-bottom: 8px; }
+  .cat { margin: 56px 2px 16px; font-size: 20px; line-height: 1.3; font-weight: 700; color: var(--ink); letter-spacing: -.01em; scroll-margin-top: 62px; }
+  article { margin: 0 0 20px; border-radius: 24px; background: var(--card); overflow: hidden; scroll-margin-top: 66px; }
+  figure { margin: 0; background: var(--chip); }
+  figure img { display: block; width: 100%; height: auto; }
+  /* several pictures: swipe sideways through them */
+  .gal { position: relative; }
+  .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .slides::-webkit-scrollbar { display: none; }
+  .slides > * { flex: none; width: 100%; scroll-snap-align: start; }
+  .slides img { aspect-ratio: 16 / 9; object-fit: cover; }
+  .dots { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 5px; padding: 5px 7px;
+          border-radius: 99px; background: rgba(0,0,0,.38); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.45); transition: background-color .2s; }
+  .dots i.on { background: #fff; }
+  .body { padding: 16px 18px 18px; }
+  .meta { display: flex; align-items: center; gap: 8px; margin: 0 0 5px; font-size: 12px; line-height: 18px; color: var(--mute); }
+  .new { padding: 0 8px; border-radius: 99px; color: var(--ed); font-size: 11px; font-weight: 700;
+         background: var(--chip); background: color-mix(in srgb, var(--ed) 15%, transparent); }
+  h4 { margin: 0 0 6px; font-size: 18px; line-height: 1.4; }
+  /* the summary: two lines, the rest behind 更多 (a checkbox, so it opens without scripts too) */
+  .x { display: none; }
+  .sum { position: relative; display: block; margin: 0 0 12px; font-size: 13px; line-height: 1.6; color: var(--ink2); cursor: pointer; }
+  .sum p { margin: 0; overflow-wrap: anywhere; }
+  .x:not(:checked) + .sum p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .more { position: absolute; right: 0; bottom: 0; padding-left: 2.4em; color: var(--accent); font-weight: 600;
+          background: linear-gradient(to right, transparent, var(--card) 2em); }
+  .x:checked + .sum .more, .sum.short .more { display: none; }
+  .sum.short { cursor: auto; }
+  .actions { display: flex; gap: 8px; align-items: center; }
+  .share { display: none; flex: none; color: var(--ink2); }
+  /* likes and dislikes: only on the owner's devices (added by script once the token checks out) */
+  .vote { display: flex; gap: 6px; margin-left: auto; }
+  .vote button { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 30px; padding: 0; border: 0;
+                 border-radius: 99px; background: var(--chip); color: var(--mute); cursor: pointer; transition: background-color .15s, color .15s; }
+  .vote .down svg { transform: rotate(180deg); }
+  .vote .up.on { background: var(--accent); color: #fff; }
+  .vote .down.on { background: var(--ink2); color: var(--bg); }
+  .vote.err button { box-shadow: 0 0 0 1.5px #ff453a; }
+  .setup { position: fixed; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; padding: 16px;
+           background: rgba(0,0,0,.4); }
+  .setup .box { width: 100%; max-width: 420px; padding: 16px; border-radius: 24px; background: var(--card); }
+  .setup .line { display: flex; gap: 8px; }
+  .setup input { flex: 1; min-width: 0; height: 42px; padding: 0 14px; border: 0; border-radius: 12px; background: var(--chip); color: var(--ink);
+                 font: inherit; font-size: 16px; outline: none; }
+  .setup button { height: 42px; padding: 0 16px; border: 0; border-radius: 12px; background: var(--accent); color: #fff; font: inherit;
+                  font-size: 15px; font-weight: 600; cursor: pointer; }
+  .setup .off { background: var(--chip); color: var(--ink2); }
+  .setup p { min-height: 20px; margin: 10px 2px 0; font-size: 13px; line-height: 20px; color: var(--mute); }
+  .js .share { display: inline-flex; }
+  .note { margin: 0 0 20px; padding: 14px 18px; border-radius: 24px; background: var(--card); font-size: 14px; color: var(--mute); }
+  .pager { display: flex; justify-content: space-between; gap: 10px; padding-top: 14px; padding-bottom: 8px; }
+  .pager a { display: inline-flex; align-items: center; gap: 9px; min-width: 0; height: 44px; padding: 0 16px; border-radius: 99px;
+             background: var(--card); font-size: 15px; font-weight: 600; }
+  .pager .next svg { transform: scaleX(-1); }
+  .pager svg { flex: none; color: var(--mute); }
+  /* back to the top: a plain disc in the page's opposite colour, centred, shown only once the end of the page is reached */
+  .totop { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 6; margin-left: -23px;
+        display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%;
+        background: #000; color: #fff;
+        opacity: 0; pointer-events: none; transform: translateY(10px) scale(.9); transition: opacity .2s, transform .2s; }
+  .totop.on { opacity: 1; pointer-events: auto; transform: none; }
+  @media (prefers-color-scheme: dark) { .totop, .refresh, .toast { background: #fff; color: #000; } }
+  .pager + .totop + footer, .totop + footer { padding-bottom: max(88px, env(safe-area-inset-bottom)); }
+
+  /* The overview: a bento of the stories that matter most, then the other headlines.
+     One rule for every tile: the picture fills it; the text lies on it at the bottom, 14px in from the
+     sides and 13px up, over a veil in the picture's own colour that fades out upward (see veil); in the
+     text, one line with the company and a time, then the headline. Only the sizes change. */
+  .bento { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .duo { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .bento a { position: relative; display: block; border-radius: 24px; overflow: hidden; color: #fff;
+             background: linear-gradient(160deg, #3a6ff0, #1c1c1e 85%); }
+  .bento a { --tint: var(--tint-day, 72 72 78); }
+  @media (prefers-color-scheme: dark) { .bento a { --tint: var(--tint-night, 24 24 28); } }
+  .bento img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+  .bento .tx { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 14px 13px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 92px), rgb(var(--tint) / 0.891) calc(100% - 88.2px), rgb(var(--tint) / 0.867) calc(100% - 84.3px), rgb(var(--tint) / 0.829) calc(100% - 80.5px), rgb(var(--tint) / 0.781) calc(100% - 76.7px), rgb(var(--tint) / 0.726) calc(100% - 72.8px), rgb(var(--tint) / 0.664) calc(100% - 69px), rgb(var(--tint) / 0.6) calc(100% - 65.2px), rgb(var(--tint) / 0.533) calc(100% - 61.3px), rgb(var(--tint) / 0.467) calc(100% - 57.5px), rgb(var(--tint) / 0.402) calc(100% - 53.7px), rgb(var(--tint) / 0.34) calc(100% - 49.8px), rgb(var(--tint) / 0.281) calc(100% - 46px), rgb(var(--tint) / 0.227) calc(100% - 42.2px), rgb(var(--tint) / 0.179) calc(100% - 38.3px), rgb(var(--tint) / 0.136) calc(100% - 34.5px), rgb(var(--tint) / 0.1) calc(100% - 30.7px), rgb(var(--tint) / 0.07) calc(100% - 26.8px), rgb(var(--tint) / 0.046) calc(100% - 23px), rgb(var(--tint) / 0.027) calc(100% - 19.2px), rgb(var(--tint) / 0.015) calc(100% - 15.3px), rgb(var(--tint) / 0.006) calc(100% - 11.5px), rgb(var(--tint) / 0.002) calc(100% - 7.7px), rgb(var(--tint) / 0) calc(100% - 3.8px), rgb(var(--tint) / 0) calc(100% - 0px));
+               text-shadow: 0 1px 3px rgba(0,0,0,.28); }
+  .bento .bare .tx { background: none; }
+  /* a picture that is light where the text goes: a light veil and dark text */
+  .bento .lt { color: #1c1c1e; }
+  .bento .lt .tx { text-shadow: none; }
+  .bento .lt .firm { color: rgba(28,28,30,.62); }
+  .bento .firm { display: flex; align-items: center; gap: 7px; margin-bottom: 2px; font-size: 12px; font-weight: 600; line-height: 18px;
+                 color: rgba(255,255,255,.78); }
+  .bento .firm > span:first-child { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bento .head { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 15px; font-weight: 700; line-height: 1.35; }
+  /* Times. Grey (here: the pale meta text) is when the story was published; a capsule in the edition's
+     colour is when it was added on request. A tile shows one of the two, right after the company name. */
+  .bento .at { flex: none; height: 17px; padding: 0 7px; border-radius: 99px; background: var(--ed-solid); color: #fff; font-size: 11px;
+               font-weight: 700; line-height: 17px; letter-spacing: .01em; font-variant-numeric: tabular-nums; white-space: nowrap; text-shadow: none; }
+  /* sizes */
+  .hero { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+  .hero .tx { padding-top: 104px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 124px), rgb(var(--tint) / 0.891) calc(100% - 118.8px), rgb(var(--tint) / 0.867) calc(100% - 113.7px), rgb(var(--tint) / 0.829) calc(100% - 108.5px), rgb(var(--tint) / 0.781) calc(100% - 103.3px), rgb(var(--tint) / 0.726) calc(100% - 98.2px), rgb(var(--tint) / 0.664) calc(100% - 93px), rgb(var(--tint) / 0.6) calc(100% - 87.8px), rgb(var(--tint) / 0.533) calc(100% - 82.7px), rgb(var(--tint) / 0.467) calc(100% - 77.5px), rgb(var(--tint) / 0.402) calc(100% - 72.3px), rgb(var(--tint) / 0.34) calc(100% - 67.2px), rgb(var(--tint) / 0.281) calc(100% - 62px), rgb(var(--tint) / 0.227) calc(100% - 56.8px), rgb(var(--tint) / 0.179) calc(100% - 51.7px), rgb(var(--tint) / 0.136) calc(100% - 46.5px), rgb(var(--tint) / 0.1) calc(100% - 41.3px), rgb(var(--tint) / 0.07) calc(100% - 36.2px), rgb(var(--tint) / 0.046) calc(100% - 31px), rgb(var(--tint) / 0.027) calc(100% - 25.8px), rgb(var(--tint) / 0.015) calc(100% - 20.7px), rgb(var(--tint) / 0.006) calc(100% - 15.5px), rgb(var(--tint) / 0.002) calc(100% - 10.3px), rgb(var(--tint) / 0) calc(100% - 5.2px), rgb(var(--tint) / 0) calc(100% - 0px)); }
+  .hero .head { font-size: 22px; }
+  .wide { grid-column: 1 / -1; height: 140px; }
+  .wide .tx { padding-top: 52px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 72px), rgb(var(--tint) / 0.891) calc(100% - 69px), rgb(var(--tint) / 0.867) calc(100% - 66px), rgb(var(--tint) / 0.829) calc(100% - 63px), rgb(var(--tint) / 0.781) calc(100% - 60px), rgb(var(--tint) / 0.726) calc(100% - 57px), rgb(var(--tint) / 0.664) calc(100% - 54px), rgb(var(--tint) / 0.6) calc(100% - 51px), rgb(var(--tint) / 0.533) calc(100% - 48px), rgb(var(--tint) / 0.467) calc(100% - 45px), rgb(var(--tint) / 0.402) calc(100% - 42px), rgb(var(--tint) / 0.34) calc(100% - 39px), rgb(var(--tint) / 0.281) calc(100% - 36px), rgb(var(--tint) / 0.227) calc(100% - 33px), rgb(var(--tint) / 0.179) calc(100% - 30px), rgb(var(--tint) / 0.136) calc(100% - 27px), rgb(var(--tint) / 0.1) calc(100% - 24px), rgb(var(--tint) / 0.07) calc(100% - 21px), rgb(var(--tint) / 0.046) calc(100% - 18px), rgb(var(--tint) / 0.027) calc(100% - 15px), rgb(var(--tint) / 0.015) calc(100% - 12px), rgb(var(--tint) / 0.006) calc(100% - 9px), rgb(var(--tint) / 0.002) calc(100% - 6px), rgb(var(--tint) / 0) calc(100% - 3px), rgb(var(--tint) / 0) calc(100% - 0px)); }
+  .wide .head { font-size: 17px; }
+  .half { height: 228px; }
+  .tall { height: 276px; }   /* two small tiles share this height: 132px each */
+  .half .head, .tall .head { -webkit-line-clamp: 3; }
+  .mini { flex: 1; min-height: 0; }
+  .mini .tx { padding-top: 44px; background: linear-gradient(to top, rgb(var(--tint) / 0.9) calc(100% - 64px), rgb(var(--tint) / 0.891) calc(100% - 61.3px), rgb(var(--tint) / 0.867) calc(100% - 58.7px), rgb(var(--tint) / 0.829) calc(100% - 56px), rgb(var(--tint) / 0.781) calc(100% - 53.3px), rgb(var(--tint) / 0.726) calc(100% - 50.7px), rgb(var(--tint) / 0.664) calc(100% - 48px), rgb(var(--tint) / 0.6) calc(100% - 45.3px), rgb(var(--tint) / 0.533) calc(100% - 42.7px), rgb(var(--tint) / 0.467) calc(100% - 40px), rgb(var(--tint) / 0.402) calc(100% - 37.3px), rgb(var(--tint) / 0.34) calc(100% - 34.7px), rgb(var(--tint) / 0.281) calc(100% - 32px), rgb(var(--tint) / 0.227) calc(100% - 29.3px), rgb(var(--tint) / 0.179) calc(100% - 26.7px), rgb(var(--tint) / 0.136) calc(100% - 24px), rgb(var(--tint) / 0.1) calc(100% - 21.3px), rgb(var(--tint) / 0.07) calc(100% - 18.7px), rgb(var(--tint) / 0.046) calc(100% - 16px), rgb(var(--tint) / 0.027) calc(100% - 13.3px), rgb(var(--tint) / 0.015) calc(100% - 10.7px), rgb(var(--tint) / 0.006) calc(100% - 8px), rgb(var(--tint) / 0.002) calc(100% - 5.3px), rgb(var(--tint) / 0) calc(100% - 2.7px), rgb(var(--tint) / 0) calc(100% - 0px)); }
+  .mini .head { font-size: 13px; }
+  /* the other headlines: plain lines on the page, the company a shade stronger than what it did */
+  .toc { margin: 30px 2px 0; padding: 0; list-style: none; }
+  .toc li + li { border-top: .5px solid var(--line); }
+  .toc a { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; font-size: 14px; line-height: 1.45; color: var(--ink2); }
+  .toc .num { flex: none; font-size: 12px; font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .toc .grow { flex: 1; min-width: 0; }
+  .toc .firm { margin-right: .5em; color: var(--ink); }
+  .toc time, .toc .at { flex: none; font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .toc time { color: var(--mute); opacity: .8; }
+  .toc .at { font-weight: 700; color: var(--ed); }
+
+  @supports (corner-shape: squircle) {
+    article, .bento a, .note, .setup .box { corner-shape: squircle; border-radius: 41px; }
+    .bento .mini { corner-shape: squircle; border-radius: 32px; }
+  }
+  @supports not (corner-shape: squircle) {
+    article, .bento a, .note, .setup .box { border-radius: 0; clip-path: polygon(0px 40.8px, 0.31px 23.8px, 1.25px 16.94px, 2.83px 11.95px, 5.09px 8.09px, 8.09px 5.09px, 11.95px 2.83px, 16.94px 1.25px, 23.8px 0.31px, 40.8px 0px, calc(100% - 40.8px) 0px, calc(100% - 23.8px) 0.31px, calc(100% - 16.94px) 1.25px, calc(100% - 11.95px) 2.83px, calc(100% - 8.09px) 5.09px, calc(100% - 5.09px) 8.09px, calc(100% - 2.83px) 11.95px, calc(100% - 1.25px) 16.94px, calc(100% - 0.31px) 23.8px, 100% 40.8px, 100% calc(100% - 40.8px), calc(100% - 0.31px) calc(100% - 23.8px), calc(100% - 1.25px) calc(100% - 16.94px), calc(100% - 2.83px) calc(100% - 11.95px), calc(100% - 5.09px) calc(100% - 8.09px), calc(100% - 8.09px) calc(100% - 5.09px), calc(100% - 11.95px) calc(100% - 2.83px), calc(100% - 16.94px) calc(100% - 1.25px), calc(100% - 23.8px) calc(100% - 0.31px), calc(100% - 40.8px) 100%, 40.8px 100%, 23.8px calc(100% - 0.31px), 16.94px calc(100% - 1.25px), 11.95px calc(100% - 2.83px), 8.09px calc(100% - 5.09px), 5.09px calc(100% - 8.09px), 2.83px calc(100% - 11.95px), 1.25px calc(100% - 16.94px), 0.31px calc(100% - 23.8px), 0px calc(100% - 40.8px)); }
+    .bento .mini { border-radius: 0; clip-path: polygon(0px 32.3px, 0.25px 18.84px, 0.99px 13.41px, 2.24px 9.46px, 4.03px 6.4px, 6.4px 4.03px, 9.46px 2.24px, 13.41px 0.99px, 18.84px 0.25px, 32.3px 0px, calc(100% - 32.3px) 0px, calc(100% - 18.84px) 0.25px, calc(100% - 13.41px) 0.99px, calc(100% - 9.46px) 2.24px, calc(100% - 6.4px) 4.03px, calc(100% - 4.03px) 6.4px, calc(100% - 2.24px) 9.46px, calc(100% - 0.99px) 13.41px, calc(100% - 0.25px) 18.84px, 100% 32.3px, 100% calc(100% - 32.3px), calc(100% - 0.25px) calc(100% - 18.84px), calc(100% - 0.99px) calc(100% - 13.41px), calc(100% - 2.24px) calc(100% - 9.46px), calc(100% - 4.03px) calc(100% - 6.4px), calc(100% - 6.4px) calc(100% - 4.03px), calc(100% - 9.46px) calc(100% - 2.24px), calc(100% - 13.41px) calc(100% - 0.99px), calc(100% - 18.84px) calc(100% - 0.25px), calc(100% - 32.3px) 100%, 32.3px 100%, 18.84px calc(100% - 0.25px), 13.41px calc(100% - 0.99px), 9.46px calc(100% - 2.24px), 6.4px calc(100% - 4.03px), 4.03px calc(100% - 6.4px), 2.24px calc(100% - 9.46px), 0.99px calc(100% - 13.41px), 0.25px calc(100% - 18.84px), 0px calc(100% - 32.3px)); }
+  }
+</style>
+<script>document.documentElement.classList.add('js');
+  try { localStorage.removeItem('digest-theme'); } catch (e) {}   // left by the old manual theme switch</script>
+</head><body>
+<header class="col" id="top">
+  <div class="bar"><a class="back" href="../"><svg viewBox="0 0 12 20" width="10" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 2 10l8 8"/></svg><span>往期</span></a></div>
+  <h1>11月27日 · 周五 <span class="ed">早报</span></h1>
+</header>
+<div class="tabs"><div class="col"><nav class="strip"><a href="#c1" data-c="1">Agent 与产品</a><a href="#c2" data-c="2">模型发布</a><a href="#c3" data-c="3">公司动态</a></nav></div></div>
+<main class="col">
+  <div class="bento">
+      <a href="#n1" class="hero" style="--tint-day: 110 99 89; --tint-night: 82 74 66"><img src="01.jpg" alt="">
+        <span class="tx"><span class="firm"><span>Perplexity · <time datetime="2026-11-26T18:36:00.000Z">11月27日 2:36</time></span></span><span class="head">Orchestrator API 开放全部主流模型</span></span></a>
+      <div class="duo">
+      <a href="#n3" class="mini" style="--tint-day: 55 118 91; --tint-night: 39 84 64"><img src="03.jpg" alt="" loading="lazy">
+        <span class="tx"><span class="firm"><span>Anthropic · <time datetime="2026-11-26T17:04:00.000Z">11月27日 1:04</time></span></span><span class="head">Messages API 改用 Rust 重写</span></span></a>
+      <a href="#n7" class="mini" style="--tint-day: 77 77 77; --tint-night: 35 35 35"><img src="07.jpg" alt="" loading="lazy">
+        <span class="tx"><span class="firm"><span>Ant Robbyant · <time datetime="2026-11-26T18:30:00.000Z">11月27日 2:30</time></span></span><span class="head">开源导航模型 LingBot-Navi</span></span></a>
+      </div>
+      <a href="#n2" class="tall lt" style="--tint-day: 242 242 242; --tint-night: 242 242 242"><img src="02.jpg" alt="" loading="lazy">
+        <span class="tx"><span class="firm"><span>OpenAI · <time datetime="2026-11-26T22:59:00.000Z">11月27日 6:59</time></span></span><span class="head">修复 GPT-6.2 计费错误</span></span></a>
+    </div>
+    <ol class="toc">
+      <li><a href="#n4"><span class="num">01</span><span class="grow"><span class="firm">Meshy</span>7.5 兼顾高细节与实时性能</span><time datetime="2026-11-26T19:00:00.000Z">11月27日 3:00</time></a></li>
+      <li><a href="#n5"><span class="num">02</span><span class="grow"><span class="firm">Krea</span>动态图形编辑器 Krea Motion 免费开放</span><time datetime="2026-11-26T16:30:00.000Z">11月27日 0:30</time></a></li>
+      <li><a href="#n6"><span class="num">03</span><span class="grow"><span class="firm">支付宝</span>SkillPay 支持 Skill 买断与订阅变现</span><time datetime="2026-11-26T23:56:00.000Z">11月27日 7:56</time></a></li>
+      <li><a href="#n8"><span class="num">04</span><span class="grow"><span class="firm">Sakana AI</span>Namazu Small 30B 推理模型</span><time datetime="2026-11-26T22:06:00.000Z">11月27日 6:06</time></a></li>
+      <li><a href="#n9"><span class="num">05</span><span class="grow"><span class="firm">OpenAI</span>GPT-Live-1.1 登顶 Voice Arena</span><time datetime="2026-11-26T21:38:00.000Z">11月27日 5:38</time></a></li>
+      <li><a href="#n10"><span class="num">06</span><span class="grow"><span class="firm">Z.AI</span>遭蒸馏封锁后转向 Google 与 Meta 获数据</span><time datetime="2026-11-26T15:45:00.000Z">11月26日 23:45</time></a></li>
+    </ol>
+  
+    <h3 class="cat" data-c="1" id="c1">Agent 与产品</h3>
+    
+    <article id="n1" data-k="1sb6sic" data-cat="Agent 与产品">
+      <figure><a href="https://x.com/AravSrinivas/status/2126022323069419777" target="_blank" rel="noopener"><img src="01.jpg" alt=""></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T18:36:00.000Z">11月27日 2:36</time></div>
+        <h4>Perplexity · Orchestrator API 开放全部主流模型</h4>
+        <input class="x" type="checkbox" id="m1"><label class="sum" for="m1"><p>Perplexity 推出 Orchestrator API，用户可通过同一接口调用全部主流 AI 模型，开发者示例展示 47 个模型并行返回多角度结果的多模型编排用法。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://x.com/AravSrinivas/status/2126022323069419777" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/AravSrinivas/status/2126022323069419777" data-title="Perplexity · Orchestrator API 开放全部主流模型">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n2" data-k="rkotxb" data-cat="Agent 与产品">
+      <figure><a href="https://www.ithome.com/1/033/138.htm" target="_blank" rel="noopener"><img src="02.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T22:59:00.000Z">11月27日 6:59</time></div>
+        <h4>OpenAI · 修复 GPT-6.2 计费错误</h4>
+        <input class="x" type="checkbox" id="m2"><label class="sum" for="m2"><p>OpenAI 承认 GPT-6.2 上线初期计费折扣有误，修复后 Astra 额度消耗速度加快 40%、Sol 快 25%，但额度效率仍高于上一代。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://www.ithome.com/1/033/138.htm" target="_blank" rel="noopener"><span class="host">ithome.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.ithome.com/1/033/138.htm" data-title="OpenAI · 修复 GPT-6.2 计费错误">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n3" data-k="8t8j7t" data-cat="Agent 与产品">
+      <figure><a href="https://x.com/adocomplete/status/2125999149619532229" target="_blank" rel="noopener"><img src="03.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T17:04:00.000Z">11月27日 1:04</time></div>
+        <h4>Anthropic · Messages API 改用 Rust 重写</h4>
+        <input class="x" type="checkbox" id="m3"><label class="sum" for="m3"><p>Anthropic 将 Messages API 用 Rust 重写，首 token 中位时间降低约 20%，叠加 Max 与 Team 订阅附带的月度 API 额度领取提醒。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://x.com/adocomplete/status/2125999149619532229" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/adocomplete/status/2125999149619532229" data-title="Anthropic · Messages API 改用 Rust 重写">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n4" data-k="1vqfcuz" data-cat="Agent 与产品">
+      <figure><a href="https://x.com/MeshyAI/status/2126028221850542511" target="_blank" rel="noopener"><img src="04.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T19:00:00.000Z">11月27日 3:00</time></div>
+        <h4>Meshy · 7.5 兼顾高细节与实时性能</h4>
+        <input class="x" type="checkbox" id="m4"><label class="sum" for="m4"><p>新版多边形数量减少约 50 倍而外观接近原版，高细节与实时性能不再取舍，已逐步上线。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://x.com/MeshyAI/status/2126028221850542511" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/MeshyAI/status/2126028221850542511" data-title="Meshy · 7.5 兼顾高细节与实时性能">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n5" data-k="46e6qf" data-cat="Agent 与产品">
+      <figure><a href="https://x.com/krea_ai/status/2125990539933978753" target="_blank" rel="noopener"><img src="05.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T16:30:00.000Z">11月27日 0:30</time></div>
+        <h4>Krea · 动态图形编辑器 Krea Motion 免费开放</h4>
+        <input class="x" type="checkbox" id="m5"><label class="sum" for="m5"><p>Krea 推出 AI 动态图形编辑器 Motion，生成高质量动态图形的工作流免费向所有用户开放试用。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://x.com/krea_ai/status/2125990539933978753" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/krea_ai/status/2125990539933978753" data-title="Krea · 动态图形编辑器 Krea Motion 免费开放">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n6" data-k="1h0mv3b" data-cat="Agent 与产品">
+      <figure class="gal"><div class="slides"><a href="https://mp.weixin.qq.com/s/x7Yt237NPL-sLvkUJlwESw" target="_blank" rel="noopener"><img src="06.jpg" alt="" loading="lazy"></a><a href="https://mp.weixin.qq.com/s/x7Yt237NPL-sLvkUJlwESw" target="_blank" rel="noopener"><img src="06-2.jpg" alt="" loading="lazy"></a><a href="https://mp.weixin.qq.com/s/x7Yt237NPL-sLvkUJlwESw" target="_blank" rel="noopener"><img src="06-3.jpg" alt="" loading="lazy"></a><a href="https://mp.weixin.qq.com/s/x7Yt237NPL-sLvkUJlwESw" target="_blank" rel="noopener"><img src="06-4.jpg" alt="" loading="lazy"></a></div><span class="dots"><i class="on"></i><i></i><i></i><i></i></span></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T23:56:00.000Z">11月27日 7:56</time></div>
+        <h4>支付宝 · SkillPay 支持 Skill 买断与订阅变现</h4>
+        <input class="x" type="checkbox" id="m6"><label class="sum" for="m6"><p>支付宝 SkillPay 实测：Skill 支持买断与订阅两种售卖，买断价 0.01-50 元，订阅保留云端沙盒不交付明文，免费试用至少 5 次。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://mp.weixin.qq.com/s/x7Yt237NPL-sLvkUJlwESw" target="_blank" rel="noopener"><span class="host">mp.weixin.qq.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://mp.weixin.qq.com/s/x7Yt237NPL-sLvkUJlwESw" data-title="支付宝 · SkillPay 支持 Skill 买断与订阅变现">分享</button>
+        </div>
+      </div>
+    </article>
+    <h3 class="cat" data-c="2" id="c2">模型发布</h3>
+    
+    <article id="n7" data-k="nrvzmz" data-cat="模型发布">
+      <figure><a href="https://x.com/robbyant_brain/status/2126020732610302086" target="_blank" rel="noopener"><img src="07.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T18:30:00.000Z">11月27日 2:30</time></div>
+        <h4>Ant Robbyant · 开源导航模型 LingBot-Navi</h4>
+        <input class="x" type="checkbox" id="m7"><label class="sum" for="m7"><p>蚂蚁具身公司开源 LingBot-Navi，基于 LingBot-Map 2.0 的跨任务 3D 空间记忆让机器人探索越久导航越快，无需预先建图即可按自然语言指令找目标。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://x.com/robbyant_brain/status/2126020732610302086" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/robbyant_brain/status/2126020732610302086" data-title="Ant Robbyant · 开源导航模型 LingBot-Navi">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n8" data-k="8rmz81" data-cat="模型发布">
+      <figure class="gal"><div class="slides"><a href="https://www.marktechpost.com/2026/11/26/sakana-ai-namazu-small-30b-nemotron-3-nano/" target="_blank" rel="noopener"><img src="08.jpg" alt="" loading="lazy"></a><a href="https://www.marktechpost.com/2026/11/26/sakana-ai-namazu-small-30b-nemotron-3-nano/" target="_blank" rel="noopener"><img src="08-2.jpg" alt="" loading="lazy"></a></div><span class="dots"><i class="on"></i><i></i></span></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T22:06:00.000Z">11月27日 6:06</time></div>
+        <h4>Sakana AI · Namazu Small 30B 推理模型</h4>
+        <input class="x" type="checkbox" id="m8"><label class="sum" for="m8"><p>Sakana AI 基于 NVIDIA Nemotron 3 Nano 做继续预训练与后训练，发布 30B-A3B 推理模型 Namazu Small。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://www.marktechpost.com/2026/11/26/sakana-ai-namazu-small-30b-nemotron-3-nano/" target="_blank" rel="noopener"><span class="host">marktechpost.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://www.marktechpost.com/2026/11/26/sakana-ai-namazu-small-30b-nemotron-3-nano/" data-title="Sakana AI · Namazu Small 30B 推理模型">分享</button>
+        </div>
+      </div>
+    </article>
+    <article id="n9" data-k="tb7hwf" data-cat="模型发布">
+      <figure><a href="https://x.com/rohanpaul_ai/status/2126068055725965384" target="_blank" rel="noopener"><img src="09.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T21:38:00.000Z">11月27日 5:38</time></div>
+        <h4>OpenAI · GPT-Live-1.1 登顶 Voice Arena</h4>
+        <input class="x" type="checkbox" id="m9"><label class="sum" for="m9"><p>GPT-Live-1.1 以 999 自然度 Elo 和 1025 感知任务有效性 Elo 首度登顶 Voice Arena Jarvis Bench。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://x.com/rohanpaul_ai/status/2126068055725965384" target="_blank" rel="noopener"><span class="host">x.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://x.com/rohanpaul_ai/status/2126068055725965384" data-title="OpenAI · GPT-Live-1.1 登顶 Voice Arena">分享</button>
+        </div>
+      </div>
+    </article>
+    <h3 class="cat" data-c="3" id="c3">公司动态</h3>
+    
+    <article id="n10" data-k="1jbwe57" data-cat="公司动态">
+      <figure><a href="https://the-decoder.com/after-openai-and-anthropic-shut-the-door-on-their-data-a-chinese-ai-developer-is-turning-to-google-and-meta-instead/" target="_blank" rel="noopener"><img src="10.jpg" alt="" loading="lazy"></a></figure>
+      <div class="body">
+        <div class="meta"><time datetime="2026-11-26T15:45:00.000Z">11月26日 23:45</time></div>
+        <h4>Z.AI · 遭蒸馏封锁后转向 Google 与 Meta 获数据</h4>
+        <input class="x" type="checkbox" id="m10"><label class="sum" for="m10"><p>路透消息称 OpenAI 与 Anthropic 封堵后，Z.AI 约 3 万亿参数 GLM-5.5 可能从 11 月推迟至 2027 年一季度，先以 7500 亿参数 GLM-5.4 过渡。</p><span class="more">更多</span></label>
+        <div class="actions">
+          <a class="chip" href="https://the-decoder.com/after-openai-and-anthropic-shut-the-door-on-their-data-a-chinese-ai-developer-is-turning-to-google-and-meta-instead/" target="_blank" rel="noopener"><span class="host">the-decoder.com</span><span>↗</span></a>
+          <button class="chip share" type="button" data-url="https://the-decoder.com/after-openai-and-anthropic-shut-the-door-on-their-data-a-chinese-ai-developer-is-turning-to-google-and-meta-instead/" data-title="Z.AI · 遭蒸馏封锁后转向 Google 与 Meta 获数据">分享</button>
+        </div>
+      </div>
+    </article>
+  
+</main>
+
+<div class="pager col">
+  <a class="prev" href="../2026-11-26-pm/"><svg viewBox="0 0 12 20" width="10" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 2 10l8 8"/></svg><span>11月26日 晚报</span></a>
+  
+</div>
+<a class="totop" href="#top" aria-label="回到顶部"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16V4M4.5 9.5 10 4l5.5 5.5"/></svg></a>
+<footer class="col"></footer>
+<script>
+(function () {
+  // 更多 only where the summary really is cut short.
+  var sums = [].slice.call(document.querySelectorAll('.sum'));
+  function measure() {
+    sums.forEach(function (s) {
+      var box = document.getElementById(s.getAttribute('for')), p = s.querySelector('p');
+      if (!box.checked) s.classList.toggle('short', p.scrollHeight <= p.clientHeight + 1);
+    });
+  }
+  measure();
+  window.addEventListener('resize', measure);
+  window.addEventListener('load', measure);
+
+  // Times: today's as "3 小时前", earlier ones as a date.
+  [].forEach.call(document.querySelectorAll('time[datetime]'), function (el) {
+    var t = new Date(el.getAttribute('datetime')), now = new Date(), mins = (now - t) / 60000;
+    if (isNaN(t) || mins < 0) return;
+    el.textContent = t.toDateString() !== now.toDateString() ? (t.getMonth() + 1) + '月' + t.getDate() + '日'
+      : mins < 1 ? '刚刚' : mins < 60 ? Math.floor(mins) + ' 分钟前' : Math.floor(mins / 60) + ' 小时前';
+  });
+
+  // Galleries: which picture is showing.
+  [].forEach.call(document.querySelectorAll('.gal'), function (g) {
+    var slides = g.querySelector('.slides'), dots = g.querySelectorAll('.dots i');
+    slides.addEventListener('scroll', function () {
+      var at = Math.round(slides.scrollLeft / slides.clientWidth);
+      [].forEach.call(dots, function (d, k) { d.classList.toggle('on', k === at); });
+    }, { passive: true });
+  });
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.share'); if (!b) return;
+    var data = { title: b.getAttribute('data-title'), url: b.getAttribute('data-url') };
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    var done = function () { b.textContent = '已复制链接'; setTimeout(function () { b.textContent = '分享'; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(data.url).then(done, function () {});
+  });
+
+
+  (function () {
+    var KEY = 'digest-vote-token', API = 'https://api.github.com/repos/Tanghao-y/ai-digest-votes', FILE = API + '/contents/votes/2026-11-27-am.json';
+    var THUMB = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>', REFRESH = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>';
+    var votes = {}, sha = null, queue = Promise.resolve();
+    function token() { try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } }
+    function call(url, tok, opts) {
+      opts = opts || {}; opts.cache = 'no-store';
+      opts.headers = { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github+json' };
+      return fetch(url, opts);
+    }
+    function pack(text) { return btoa(unescape(encodeURIComponent(text))); }
+    function unpack(b64) { return decodeURIComponent(escape(atob(b64.replace(/\s/g, '')))); }
+    function load() {
+      return call(FILE, token()).then(function (r) {
+        if (r.status === 404) { votes = {}; sha = null; return; }
+        if (!r.ok) throw new Error(r.status);
+        return r.json().then(function (f) { sha = f.sha; votes = JSON.parse(unpack(f.content)) || {}; });
+      });
+    }
+    function save() {
+      var body = { message: '2026-11-27-am', content: pack(JSON.stringify(votes, null, 1)) };
+      if (sha) body.sha = sha;
+      return call(FILE, token(), { method: 'PUT', body: JSON.stringify(body) }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json().then(function (j) { sha = j.content.sha; });
+      });
+    }
+    function paint() {
+      [].forEach.call(document.querySelectorAll('article[data-k]'), function (a) {
+        var v = (votes[a.getAttribute('data-k')] || {}).v, box = a.querySelector('.vote');
+        if (!box) return;
+        box.querySelector('.up').classList.toggle('on', v === 1);
+        box.querySelector('.down').classList.toggle('on', v === -1);
+      });
+    }
+    function cast(a, want) {
+      var k = a.getAttribute('data-k'), link = a.querySelector('.actions a.chip'), box = a.querySelector('.vote');
+      var change = function () {
+        if (votes[k] && votes[k].v === want) delete votes[k];
+        else votes[k] = { v: want, at: new Date().toISOString(), t: a.querySelector('h4').textContent,
+                          u: link ? link.href : '', c: a.getAttribute('data-cat') || '' };
+      };
+      var before = votes[k];
+      change(); paint(); box.classList.remove('err');
+      // One write at a time. If the file changed elsewhere meanwhile, read it again and apply the tap on top.
+      queue = queue.then(save).catch(function () {
+        return load().then(function () { change(); paint(); return save(); });
+      }).catch(function () {
+        if (before) votes[k] = before; else delete votes[k];
+        paint(); box.classList.add('err');
+      });
+    }
+    function mount() {
+      [].forEach.call(document.querySelectorAll('article[data-k]'), function (a) {
+        var box = document.createElement('span'); box.className = 'vote';
+        [['up', '赞', 1], ['down', '踩', -1]].forEach(function (d) {
+          var b = document.createElement('button'); b.type = 'button'; b.className = d[0]; b.setAttribute('aria-label', d[1]); b.innerHTML = THUMB;
+          b.addEventListener('click', function () { cast(a, d[2]); });
+          box.appendChild(b);
+        });
+        a.querySelector('.actions').appendChild(box);
+      });
+    }
+    function toast(text) {
+      var t = document.createElement('div'); t.className = 'toast'; t.textContent = text;
+      document.body.appendChild(t);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { t.classList.add('on'); }); });
+      setTimeout(function () { t.classList.remove('on'); setTimeout(function () { t.remove(); }, 300); }, 5000);
+    }
+    // Refresh: write a request for Hermes (refresh/request.json, see refresh.mjs). The icon turns for
+    // at least 3 s, then 稍后更新: the news reaches the next edition a few minutes later.
+    function refresh() {
+      var REQ = API + '/contents/refresh/request.json';
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'refresh'; b.setAttribute('aria-label', '刷新'); b.innerHTML = REFRESH;
+      document.querySelector('.tabs .col').appendChild(b);
+      b.addEventListener('click', function () {
+        if (b.classList.contains('busy')) return;
+        b.classList.add('busy');
+        var p = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), at: new Date().toISOString() };
+        var spun = new Promise(function (ok) { setTimeout(ok, 3000); });
+        var sent = call(REQ, token()).then(function (r) {
+          return r.ok ? r.json().then(function (f) { return f.sha; }) : null;
+        }).then(function (sha) {
+          var body = { message: 'refresh ' + p.id, content: pack(JSON.stringify(p)) };
+          if (sha) body.sha = sha;
+          return call(REQ, token(), { method: 'PUT', body: JSON.stringify(body) });
+        }).then(function (r) { return r.ok; }, function () { return false; });
+        Promise.all([sent, spun]).then(function (r) {
+          b.classList.remove('busy');
+          toast(r[0] ? '稍后更新' : '刷新失败');
+        });
+      });
+    }
+    function start() {
+      if (!token()) return;
+      call(API, token()).then(function (r) { if (!r.ok) throw new Error(r.status); refresh(); return load(); })
+        .then(function () { mount(); paint(); }).catch(function () {});
+    }
+
+    // <page>#setup: the panel where the owner pastes the token, or removes it from this device.
+    function setup() {
+      var wrap = document.createElement('div'); wrap.className = 'setup';
+      wrap.innerHTML = '<div class="box"><div class="line"><input type="password" placeholder="粘贴令牌" autocomplete="off" autocapitalize="off" spellcheck="false">'
+        + '<button type="button" class="ok">保存</button>' + (token() ? '<button type="button" class="off">移除</button>' : '') + '</div><p></p></div>';
+      document.body.appendChild(wrap);
+      var input = wrap.querySelector('input'), msg = wrap.querySelector('p');
+      var done = function () { history.replaceState(null, '', location.pathname + location.search); location.reload(); };
+      if (token()) msg.textContent = '这台设备已启用';
+      wrap.addEventListener('click', function (e) { if (e.target === wrap) done(); });
+      wrap.querySelector('.ok').addEventListener('click', function () {
+        var tok = input.value.trim(); if (!tok) return;
+        msg.textContent = '验证中…';
+        call(API, tok).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        }).then(function (info) {
+          if (info.permissions && info.permissions.push === false) throw new Error('read-only');
+          try { localStorage.setItem(KEY, tok); } catch (e) { throw new Error('storage'); }
+          msg.textContent = '已启用'; setTimeout(done, 700);
+        }).catch(function (e) {
+          msg.textContent = e.message === 'read-only' ? '这个令牌只能读，需要内容的读写权限'
+            : e.message === 'storage' ? '这个浏览器不允许保存，换一个浏览器再试' : '令牌无效，或没有这个仓库的权限';
+        });
+      });
+      var off = wrap.querySelector('.off');
+      if (off) off.addEventListener('click', function () { try { localStorage.removeItem(KEY); } catch (e) {} msg.textContent = '已从这台设备移除'; setTimeout(done, 700); });
+    }
+    if (location.hash === '#setup') setup(); else start();
+  })();
+
+  // The tabs follow the reading position: the category being read is highlighted and kept in view.
+  var bar = document.querySelector('.tabs'), strip = bar.querySelector('.strip');
+  var links = [].slice.call(strip.querySelectorAll('a')), heads = [].slice.call(document.querySelectorAll('.cat'));
+  var current = null, queued = false, up = document.querySelector('.totop');
+  function spy() {
+    queued = false;
+    up.classList.toggle('on', window.scrollY > 400 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 160);
+    var line = bar.getBoundingClientRect().bottom + 28, c = null;
+    for (var i = 0; i < heads.length; i++) {
+      if (heads[i].getBoundingClientRect().top > line) break;
+      c = heads[i].getAttribute('data-c');
+    }
+    if (c && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) c = heads[heads.length - 1].getAttribute('data-c');
+    if (c === current) return;
+    current = c;
+    links.forEach(function (a) {
+      var on = a.getAttribute('data-c') === c;
+      a.classList.toggle('on', on);
+      if (on) strip.scrollTo({ left: a.offsetLeft - (strip.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+    });
+  }
+  window.addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(spy); } }, { passive: true });
+  spy();
+})();
+</script>
+</body></html>
